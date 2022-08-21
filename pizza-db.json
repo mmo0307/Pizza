@@ -1,26 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { ProductCard } from "../product-cart/productCard";
-import axios from "axios";
-
-interface DataProduct {
-  description: string;
-  img: string;
-  name: string;
-  price: number;
-  veg: boolean;
-}
-
-export function AllMenu() {
-  // const options = {
-  //   method: "GET",
-  //   url: "https://pizza-and-desserts.p.rapidapi.com/pizzas",
-  //   headers: {
-  //     "X-RapidAPI-Key": "795b3ce5afmsh5baffbab92a8e06p117020jsn86f9c1f10182",
-  //     "X-RapidAPI-Host": "pizza-and-desserts.p.rapidapi.com",
-  //   },
-  // };
-
-  const [data_product, setData] = useState([
+{
+  "pizzas": [
     {
       "id": 1,
       "name": "Margherita",
@@ -548,29 +527,5 @@ export function AllMenu() {
         }
       ]
     }
-  ]);
-
-  // useEffect(() => {
-  //   axios
-  //     .request(options)
-  //     .then(function (response) {
-  //       setData(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  // }, []);
-
-  return (
-    <>
-      <section id="menu" className="menu">
-        <h1 className="heading">our menu</h1>
-        <div className="box-container">
-          {data_product.map((data: DataProduct, indx: number) => {
-            return <ProductCard key={indx} data={data} />;
-          })}
-        </div>
-      </section>
-    </>
-  );
+  ]
 }

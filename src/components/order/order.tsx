@@ -2,10 +2,13 @@ import React from "react";
 
 export function Order() {
   return (
-    <section className="order" id="order">
+  <>
+      <section className="order" id="order">
       <h1 className="heading">order now</h1>
 
       <form action="" method="post">
+
+        <div>
         <div className="display-orders">
           <p>
             pizza-1 <span>( $3/- x 2 )</span>
@@ -19,8 +22,30 @@ export function Order() {
           <p>
             pizza-7 <span>( $2/- x 1 )</span>
           </p>
+          <p>
+            pizza-7 <span>( $2/- x 1 )</span>
+          </p>
+          <p>
+            pizza-7 <span>( $2/- x 1 )</span>
+          </p>
+          <p>
+            pizza-7 <span>( $2/- x 1 )</span>
+          </p>
+          <p>
+            pizza-7 <span>( $2/- x 1 )</span>
+          </p>
+          <p>
+            pizza-7 <span>( $2/- x 1 )</span>
+          </p>
+          <p>
+            pizza-7 <span>( $2/- x 1 )</span>
+          </p>
+          <p>
+            pizza-7 <span>( $2/- x 1 )</span>
+          </p>
         </div>
 
+        <div>
         <div className="flex">
           <div className="inputBox">
             <span>your name :</span>
@@ -89,7 +114,12 @@ export function Order() {
         </div>
 
         <input type="submit" value="order now" className="btn" name="order" />
+        </div>
+
+        </div>
       </form>
     </section>
+  </>
+
   );
 }

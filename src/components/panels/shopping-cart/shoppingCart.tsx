@@ -1,21 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { shopToogle } from "../../../action";
-import Pizza1 from "../../../images/pizza/pizza-1.jpg";
-import Pizza7 from "../../../images/pizza/pizza-7.jpg";
-import Pizza3 from "../../../images/pizza/pizza-3.jpg";
-import Pizza6 from "../../../images/pizza/pizza-6.jpg";
+import { deleteItem, shopToogle } from "../../../action";
 import { Link } from "react-router-dom";
 
-export const ShoppingCart: React.FC = () => {
-  const flag = useSelector((state: any) => state.toogle.shop);
-  const dispatch = useDispatch();
-  const [count, setCount] = useState<number>(1);
+interface Data {
+  id: number;
+  pizzaName: string;
+  image: string;
+  price: number;
+  count: number;
+}
 
-  const changeCount = (e:any) => {
-    setCount(e.currentTarget.value)
-  }
-  
+export const ShoppingCart: React.FC = () => {
+  const dispatch = useDispatch();
+  const flag = useSelector((state: any) => state.toogle.shop);
+  const item = useSelector((state:any) => state.product)
+  const [count, setCount] = useState<number>(1);
+  const [data, setData] = useState<Data[]>(item.productList);
+
+  console.log(data)
+
+  const changeCount = (e: any) => {
+    setCount(e.currentTarget.value);
+  };
+
+  useEffect(() => {
+    setData(item.productList);
+  }, [item]);
+
   return (
     <>
       <div className={`shopping-cart ${flag ? "active" : ""}`}>
@@ -24,110 +36,36 @@ export const ShoppingCart: React.FC = () => {
             <span onClick={() => dispatch(shopToogle())}>close</span>
           </div>
 
-          <div className="box">
-            <a href="#" className="fas fa-times"></a>
-            <img src={Pizza1} alt="" />
-            <div className="content">
-              <p>
-                pizza-1 <span>( $3/- x 2 )</span>
-              </p>
-              <form action="" method="post">
-                <input
-                  type="number"
-                  className="qty"
-                  name="qty"
-                  min={1}
-                  max={100}
-                  value={count}
-                  onChange={changeCount}
-                />
-                <button
-                  type="submit"
-                  className="fas fa-edit"
-                  name="update_qty"
-                ></button>
-              </form>
+          {data.map((item: Data, indx: number) => (
+            <div className="box" key={`${indx}`}>
+              <a href="#" className="fas fa-times" onClick={() => dispatch(deleteItem(item.id))}></a>
+              <img src={item.image} alt="" />
+              <div className="content">
+                <p>
+                  {item.pizzaName}{" "}
+                  <span>
+                    ( ${item.price}/- x {item.count} )
+                  </span>
+                </p>
+                <div>
+                  <input
+                    type="number"
+                    className="qty"
+                    name="qty"
+                    min={1}
+                    max={100}
+                    value={count}
+                    onChange={changeCount}
+                  />
+                  <button
+                    type="submit"
+                    className="fas fa-edit"
+                    name="update_qty"
+                  ></button>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div className="box">
-            <a href="#" className="fas fa-times"></a>
-            <img src={Pizza3} alt="" />
-            <div className="content">
-              <p>
-                pizza-3 <span>( $2/- x 1 )</span>
-              </p>
-              <form action="" method="post">
-                <input
-                  type="number"
-                  className="qty"
-                  name="qty"
-                  min={1}
-                  max={100}
-                  value={count}
-                  onChange={changeCount}
-                />
-                <button
-                  type="submit"
-                  className="fas fa-edit"
-                  name="update_qty"
-                ></button>
-              </form>
-            </div>
-          </div>
-
-          <div className="box">
-            <a href="#" className="fas fa-times"></a>
-            <img src={Pizza6} alt="" />
-            <div className="content">
-              <p>
-                pizza-6 <span>( $4/- x 2 )</span>
-              </p>
-              <form action="" method="post">
-                <input
-                  type="number"
-                  className="qty"
-                  name="qty"
-                  min={1}
-                  max={100}
-                  value={count}
-                  onChange={changeCount}
-                />
-                <button
-                  type="submit"
-                  className="fas fa-edit"
-                  name="update_qty"
-                ></button>
-              </form>
-            </div>
-          </div>
-
-          <div className="box">
-            <a href="#" className="fas fa-times"></a>
-            <img src={Pizza7} alt="" />
-            <div className="content">
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
-              <form action="" method="post">
-                <input
-                  type="number"
-                  className="qty"
-                  name="qty"
-                  min={1}
-                  max={100}
-                  value={count}
-                  onChange={changeCount}
-                />
-                <button
-                  type="submit"
-                  className="fas fa-edit"
-                  name="update_qty"
-                ></button>
-              </form>
-            </div>
-          </div>
-
+          ))}
           <Link to="/orders" className="btn">
             order now
           </Link>

@@ -3,6 +3,7 @@ import { ProductCard } from "../product-cart/productCard";
 import axios from "axios";
 
 interface DataProduct {
+  id: number;
   description: string;
   img: string;
   name: string;

@@ -572,10 +572,6 @@ section {
   margin-bottom: 0!important;
 }
 
-.menu .box-container .box .price span {
-  font-size: 2.5rem;
-}
-
 .menu .box-container .box .name {
   font-size: 2rem;
   color: var(--black);

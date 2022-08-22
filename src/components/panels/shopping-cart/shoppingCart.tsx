@@ -18,8 +18,6 @@ export const ShoppingCart: React.FC = () => {
   const [count, setCount] = useState<number>(1);
   const [data, setData] = useState<Data[]>(item.productList);
 
-  console.log(data)
-
   const changeCount = (e: any) => {
     setCount(e.currentTarget.value);
   };
@@ -67,7 +65,7 @@ export const ShoppingCart: React.FC = () => {
             </div>
           ))}
           <Link to="/orders" className="btn">
-            order now
+            order now ({item.total > 0 ? item.total : 0})$
           </Link>
         </section>
       </div>

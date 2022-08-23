@@ -360,6 +360,14 @@ section {
   color: var(--red);
 }
 
+.shopping-cart .box .fa-edit {
+  position: absolute;
+  top: 4rem;
+  right: 0.9rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .shopping-cart .box .fa-times:hover {
   color: var(--black);
 }
@@ -393,19 +401,19 @@ section {
   width: 8rem;
 }
 
-.shopping-cart .box .content div .fa-edit {
+/* .shopping-cart .box .content div .fa-edit {
   width: 5.5rem;
   font-size: 1.7rem;
   cursor: pointer;
   border-radius: 0.5rem;
   background-color: var(--light-bg);
   color: var(--black);
-}
+} */
 
-.shopping-cart .box .content div .fa-edit:hover {
+/* .shopping-cart .box .content div .fa-edit:hover {
   background-color: var(--black);
   color: var(--white);
-}
+} */
 
 @keyframes fadeLeft {
   0% {

@@ -25,20 +25,24 @@ interface ActionType {
 export const productReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
     case "ADD_CART": {
+      const findItem = state.productList.find(
+        (obj) => obj.id === action.payload.id
+      );
 
-      const findItem = state.productList.find((obj) => obj.id === action.payload.id);
-      console.log(findItem)
-      if(findItem) {
+      if (findItem) {
         findItem.count += action.payload.count;
         findItem.totalCost += action.payload.count * action.payload.price;
       } else {
-        state.productList.push({...action.payload, count: action.payload.count});
+        state.productList.push({
+          ...action.payload,
+          count: action.payload.count,
+        });
       }
 
       let total = 0;
       state.productList.forEach((item) => {
         total += item.totalCost;
-      })
+      });
 
       return { ...state, total };
     }
@@ -49,12 +53,11 @@ export const productReducer = (state = initialState, action: ActionType) => {
       let total = 0;
       state.productList.forEach((item) => {
         total += item.totalCost;
-      })
+      });
 
       return { ...state, total };
     }
     case "CHANGE_CART": {
-      console.log(state);
       return { ...state };
     }
     default:

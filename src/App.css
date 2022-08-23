@@ -223,14 +223,14 @@ section {
   align-items: flex-start;
 }
 
-.user-account .flex div {
+.user-account .flex form {
   flex: 1 1 40rem;
   border-radius: 0.5rem;
   padding: 2rem;
   background-color: var(--light-bg);
 }
 
-.user-account .flex div h3 {
+.user-account .flex form h3 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -238,7 +238,7 @@ section {
   color: var(--black);
 }
 
-.user-account .flex div .box {
+.user-account .flex form .box {
   width: 100%;
   margin: 1rem 0;
   border-radius: 0.5rem;

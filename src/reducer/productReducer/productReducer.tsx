@@ -27,23 +27,18 @@ export const productReducer = (state = initialState, action: ActionType) => {
     case "ADD_CART": {
 
       const findItem = state.productList.find((obj) => obj.id === action.payload.id);
-      
+      console.log(findItem)
       if(findItem) {
         findItem.count += action.payload.count;
         findItem.totalCost += action.payload.count * action.payload.price;
       } else {
-        console.log('tyt')
         state.productList.push({...action.payload, count: action.payload.count});
       }
-
-      console.log('state.productList = ', state.productList)
 
       let total = 0;
       state.productList.forEach((item) => {
         total += item.totalCost;
       })
-
-      console.log('total = '+total)
 
       return { ...state, total };
     }
@@ -51,7 +46,12 @@ export const productReducer = (state = initialState, action: ActionType) => {
       state.productList = state.productList.filter(
         (item) => item.id !== action.payload
       );
-      return { ...state };
+      let total = 0;
+      state.productList.forEach((item) => {
+        total += item.totalCost;
+      })
+
+      return { ...state, total };
     }
     case "CHANGE_CART": {
       console.log(state);

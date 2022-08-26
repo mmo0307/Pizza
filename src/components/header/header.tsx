@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -13,8 +13,8 @@ import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";
 
 interface Data {
   id: number;
-  pizzaName: string;
-  image: string;
+  name: string;
+  img: string;
   price: number;
   count: number;
 }

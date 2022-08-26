@@ -1,12 +1,23 @@
+interface Props {
+  price: number;
+  selected: boolean;
+}
 interface ProductList {
   id: number;
-  pizzaName: string;
-  image: string;
+  name: string;
+  img: string;
   price: number;
   count: number;
   totalCost: number;
-  //addition: string[];
-  //exclusion: string[];
+  description: string;
+  veg: boolean;
+  additions: [
+    {
+      cheese_board: [Props];
+      meat: [Props];
+      cheese_mix: [Props];
+    }
+  ];
 }
 
 interface StoreState {
@@ -58,6 +69,7 @@ export const productReducer = (state = initialState, action: ActionType) => {
       return { ...state, total };
     }
     case "CHANGE_CART": {
+      console.log(action.payload);
       let total = 0;
       state.productList.forEach((item) => {
         total += item.totalCost;

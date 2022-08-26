@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItem, shopToogle } from "../../../action";
 import { Link } from "react-router-dom";
@@ -19,6 +19,14 @@ export const ShoppingCart: React.FC = () => {
   const item = useSelector((state: any) => state.product);
   const [data, setData] = useState<Data[]>(item.productList);
   const [active, setActive] = useState<boolean>(false);
+  const [productId, setProductId] = useState<number>(0);
+  const [productData, setProductData] = useState<Data>({
+    id: 0,
+    pizzaName: "",
+    image: "",
+    price: 0,
+    count: 0,
+  });
 
   const container = useRef<any>(null);
 
@@ -35,6 +43,14 @@ export const ShoppingCart: React.FC = () => {
   useEffect(() => {
     setData(item.productList);
   }, [item]);
+
+  useEffect(() => {
+    data.forEach((item, index) => {
+      if (item.id === productId) {
+        setProductData(item);
+      }
+    });
+  }, [productId]);
 
   return (
     <>
@@ -68,7 +84,10 @@ export const ShoppingCart: React.FC = () => {
                 </p>
                 <div>
                   <button
-                    onClick={() => setActive(true)}
+                    onClick={() => {
+                      setActive(true);
+                      setProductId(item.id);
+                    }}
                     type="submit"
                     className="fas fa-edit"
                     name="update_qty"
@@ -86,7 +105,16 @@ export const ShoppingCart: React.FC = () => {
       </div>
 
       <Modal active={active} setActive={setActive}>
-        {" "}
+        <img src={productData.image} alt="" />
+        <div className="content">
+          <p>
+            {productData.pizzaName}{" "}
+            <span>
+              ( ${productData.price}/- x {productData.count} )
+            </span>
+          </p>
+          <div></div>
+        </div>
       </Modal>
     </>
   );

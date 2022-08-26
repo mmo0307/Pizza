@@ -415,6 +415,12 @@ section {
   color: var(--white);
 } */
 
+.close {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--red);
+}
+
 @keyframes fadeLeft {
   0% {
     transform: translateX(5rem);
@@ -576,8 +582,8 @@ section {
 }
 
 .vegan-img {
-  width: 50px!important;
-  margin-bottom: 0!important;
+  width: 50px !important;
+  margin-bottom: 0 !important;
 }
 
 .menu .box-container .box .name {

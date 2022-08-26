@@ -72,7 +72,7 @@ export const Menu = () => {
               price: 625,
             },
           ],
-          "medium stuffed crust-veg kebab": [
+          mediumstuffedcrustvegkebab: [
             {
               price: 625,
             },

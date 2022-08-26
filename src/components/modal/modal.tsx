@@ -13,12 +13,21 @@ export function Modal({ active, setActive, children }: Props) {
   return (
     <div
       className={active ? "modal active" : "modal"}
-      onClick={() => setActive(false)}
+      onClick={(e) => e.stopPropagation()}
     >
-      <div
-        className={active ? "modal_content active" : "modal_content"}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={active ? "modal_content active" : "modal_content"}>
+        <div className="modal_content_header">
+          <div>
+            <p className="modal_content_title">Our orders</p>
+          </div>
+          <div>
+            <a
+              href="#"
+              className="fas fa-times"
+              onClick={() => setActive(false)}
+            ></a>
+          </div>
+        </div>
         {children}
       </div>
     </div>

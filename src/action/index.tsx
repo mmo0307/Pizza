@@ -34,3 +34,8 @@ export const deleteItem = (id:number) => ({
     type: 'DELETE_CART',
     payload: id
 })
+
+export const changeItem = (id:number) => ({
+    type: 'CHANGE_CART',
+    payload: id
+})

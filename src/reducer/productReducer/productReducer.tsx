@@ -58,7 +58,11 @@ export const productReducer = (state = initialState, action: ActionType) => {
       return { ...state, total };
     }
     case "CHANGE_CART": {
-      return { ...state };
+      let total = 0;
+      state.productList.forEach((item) => {
+        total += item.totalCost;
+      });
+      return { ...state, total };
     }
     default:
       return state;

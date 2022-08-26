@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   accountToogle,
   menuToogle,
@@ -32,9 +33,9 @@ export function Header() {
     <>
       <header className="header">
         <section className="flex">
-          <a href="/" className="logo">
+          <Link to="/" className="logo">
             Pizza.
-          </a>
+          </Link>
 
           <nav className={`navbar ${flag ? "active" : ""}`}>
             <a href="#home">home</a>

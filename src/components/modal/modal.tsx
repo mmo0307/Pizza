@@ -9,7 +9,7 @@ interface Props {
   children: any;
 }
 
-export function Modal({ active, setActive, children }: Props) {
+export const Modal = ({ active, setActive, children }: Props) => {
   return (
     <div
       className={active ? "modal active" : "modal"}

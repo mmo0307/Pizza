@@ -1,37 +1,9 @@
-interface Props {
-  price: number;
-  selected: boolean;
-}
-interface ProductList {
-  id: number;
-  name: string;
-  img: string;
-  price: number;
-  count: number;
-  totalCost: number;
-  description: string;
-  veg: boolean;
-  additions: [
-    {
-      cheese_board: [Props];
-      meat: [Props];
-      cheese_mix: [Props];
-    }
-  ];
-}
-
-interface StoreState {
-  productList: ProductList[];
-}
+import { ActionType, StoreState } from "../../Types/interface/indx";
 
 const initialState: StoreState = {
   productList: [],
 };
 
-interface ActionType {
-  type: string;
-  payload: any;
-}
 
 export const productReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
@@ -42,7 +14,9 @@ export const productReducer = (state = initialState, action: ActionType) => {
 
       if (findItem) {
         findItem.count += action.payload.count;
-        findItem.totalCost += action.payload.count * action.payload.price;
+        if(findItem.totalCost){
+          findItem.totalCost += action.payload.count * action.payload.price;
+        }
       } else {
         state.productList.push({
           ...action.payload,
@@ -52,7 +26,7 @@ export const productReducer = (state = initialState, action: ActionType) => {
 
       let total = 0;
       state.productList.forEach((item) => {
-        total += item.totalCost;
+        total += item.totalCost ?? 0;
       });
 
       return { ...state, total };
@@ -63,7 +37,7 @@ export const productReducer = (state = initialState, action: ActionType) => {
       );
       let total = 0;
       state.productList.forEach((item) => {
-        total += item.totalCost;
+        total += item.totalCost ?? 0;
       });
 
       return { ...state, total };
@@ -72,7 +46,7 @@ export const productReducer = (state = initialState, action: ActionType) => {
       console.log(action.payload);
       let total = 0;
       state.productList.forEach((item) => {
-        total += item.totalCost;
+        total += item.totalCost ?? 0;
       });
       return { ...state, total };
     }

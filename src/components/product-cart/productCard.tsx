@@ -2,29 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../action";
 import Vegas from "../../images/pizza/vegan.png";
+import { ProductList } from "../../Types/interface/indx";
 
-interface Props {
-  title: string;
-  price: number;
-  selected: boolean;
-}
-interface Data {
-  id: number;
-  description: string;
-  img: string;
-  name: string;
-  price: number;
-  veg: boolean;
-  additions: [
-    {
-      cheese_board: [Props];
-      meat: [Props];
-      cheese_mix: [Props];
-    }
-  ];
-}
-
-export const ProductCard: React.FC<{ data: Data }> = ({ data }) => {
+export const ProductCard: React.FC<{ data: ProductList }> = ({ data }) => {
   const { id, price, img, name, veg, description, additions } = data;
   const dispatch = useDispatch();
   const [count, setCount] = useState<number>(1);

@@ -3,27 +3,7 @@ import { Link } from "react-router-dom";
 import { ProductCard } from "../product-cart/productCard";
 import lottie from "lottie-web";
 import axios from "axios";
-
-interface Props {
-  title: string;
-  price: number;
-  selected: boolean;
-}
-interface DataProduct {
-  id: number;
-  description: string;
-  img: string;
-  name: string;
-  price: number;
-  veg: boolean;
-  additions: [
-    {
-      cheese_board: [Props];
-      meat: [Props];
-      cheese_mix: [Props];
-    }
-  ];
-}
+import { ProductList } from "../../Types/interface/indx";
 
 export const Menu = () => {
   const [loader, setloader] = useState<boolean>(true);
@@ -66,7 +46,7 @@ export const Menu = () => {
       <h1 className="heading">our menu</h1>
 
       <div className="box-container">
-        {data_product.splice(0, 9).map((data: DataProduct, indx: number) => {
+        {data_product.splice(0, 9).map((data: ProductList, indx: number) => {
           return <ProductCard key={indx} data={data} />;
         })}
       </div>

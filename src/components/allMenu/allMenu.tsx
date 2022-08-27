@@ -2,29 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ProductCard } from "../product-cart/productCard";
 import axios from "axios";
 import lottie from "lottie-web";
-
-interface Props {
-  title:string;
-  price: number;
-  selected: boolean;
-}
-
-interface DataProduct {
-  id: number;
-  name: string;
-  veg: boolean;
-  price: number;
-  weight: number;
-  description: string;
-  img: string;
-  additions: [
-    {
-      cheese_board: [Props];
-      meat: [Props];
-      cheese_mix: [Props];
-    }
-  ];
-}
+import { ProductList } from "../../Types/interface/indx";
 
 export function AllMenu() {
   const [data_product, setData] = useState([]);
@@ -65,7 +43,7 @@ export function AllMenu() {
           ></div>
         ) : null}
         <div className="box-container">
-          {data_product.map((data: DataProduct, indx: number) => {
+          {data_product.map((data: ProductList, indx: number) => {
             return <ProductCard key={indx} data={data} />;
           })}
         </div>

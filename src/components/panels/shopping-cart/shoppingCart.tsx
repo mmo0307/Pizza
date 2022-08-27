@@ -5,39 +5,19 @@ import { Link } from "react-router-dom";
 import { Modal } from "../../modal/modal";
 import lottie from "lottie-web";
 import Vegas from "../../../images/pizza/vegan.png";
+import { ProductList } from "../../../Types/interface/indx";
 
-interface Props {
-  title: string;
-  price: number;
-  selected: boolean;
-}
-interface Data {
-  id: number;
-  name: string;
-  img: string;
-  price: number;
-  count: number;
-  description: string;
-  veg: boolean;
-  additions: [
-    {
-      cheese_board: [Props];
-      meat: [Props];
-      cheese_mix: [Props];
-    }
-  ];
-}
 
 export const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();
   const container = useRef<any>(null);
   const flag = useSelector((state: any) => state.toogle.shop);
   const item = useSelector((state: any) => state.product);
-  const [data, setData] = useState<Data[]>(item.productList);
+  const [data, setData] = useState<ProductList[]>(item.productList);
   const [active, setActive] = useState<boolean>(false);
   const [productId, setProductId] = useState<number>(0);
   const [count, setCount] = useState<number>(1);
-  const [productData, setProductData] = useState<Data>({
+  const [productData, setProductData] = useState<ProductList>({
     id: 0,
     name: "",
     img: "",
@@ -122,7 +102,7 @@ export const ShoppingCart: React.FC = () => {
           </div>
           {!item.productList.length ? <div ref={container}></div> : null}
 
-          {data.map((item: Data, indx: number) => (
+          {data.map((item: ProductList, indx: number) => (
             <div className="box" key={`${indx}`}>
               <a
                 href="#"
@@ -165,7 +145,7 @@ export const ShoppingCart: React.FC = () => {
             </div>
           ))}
           {item.productList.length ? (
-            <Link to="/orders" className="btn">
+            <Link to="/orders" className="btn" onClick={() => dispatch(shopToogle())}>
               order now ({item.total > 0 ? item.total : 0})$
             </Link>
           ) : null}

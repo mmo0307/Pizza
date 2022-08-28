@@ -1,9 +1,9 @@
 import { ActionType, StoreState } from "../../Types/interface/indx";
 
 const initialState: StoreState = {
-  productList: [],
+ // productList: JSON.parse(localStorage.getItem('productItem') || '[]'),
+  productList: []
 };
-
 
 export const productReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
@@ -14,7 +14,7 @@ export const productReducer = (state = initialState, action: ActionType) => {
 
       if (findItem) {
         findItem.count += action.payload.count;
-        if(findItem.totalCost){
+        if (findItem.totalCost) {
           findItem.totalCost += action.payload.count * action.payload.price;
         }
       } else {
@@ -28,6 +28,8 @@ export const productReducer = (state = initialState, action: ActionType) => {
       state.productList.forEach((item) => {
         total += item.totalCost ?? 0;
       });
+
+      //localStorage.setItem('productItem', JSON.stringify({ ...state, total }));
 
       return { ...state, total };
     }
@@ -43,11 +45,16 @@ export const productReducer = (state = initialState, action: ActionType) => {
       return { ...state, total };
     }
     case "CHANGE_CART": {
+      console.log(state);
       console.log(action.payload);
+      console.log(state);
+
       let total = 0;
       state.productList.forEach((item) => {
         total += item.totalCost ?? 0;
       });
+
+      //productList: action.payload,
       return { ...state, total };
     }
     default:

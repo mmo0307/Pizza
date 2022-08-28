@@ -1,32 +1,43 @@
-
 export interface ActionType {
-    type: string;
-    payload: any;
-  }
-
-interface Props {
-    title: string;
-    price: number;
-    selected: boolean;
-  }
+  type: string;
+  payload: any;
+}
 export interface ProductList {
-    id: number;
-    name: string;
-    img: string;
-    price: number;
-    count: number;
-    totalCost?: number;
-    description: string;
-    veg: boolean;
-    additions: [
-      {
-        cheese_board: [Props];
-        meat: [Props];
-        cheese_mix: [Props];
-      }
-    ];
-  }
+  id: number;
+  name: string;
+  img: string;
+  price: number;
+  count: number;
+  totalCost?: number;
+  description: string;
+  veg: boolean;
+  additions: [
+    {
+      cheese_board: [
+        {
+          title: string;
+          price: number;
+          selected: boolean;
+        }
+      ];
+      meat: [
+        {
+          title: string;
+          price: number;
+          selected: boolean;
+        }
+      ];
+      cheese_mix: [
+        {
+          title: string;
+          price: number;
+          selected: boolean;
+        }
+      ];
+    }
+  ];
+}
 
-  export interface StoreState {
-    productList: ProductList[];
-  }
+export interface StoreState {
+  productList: ProductList[];
+}

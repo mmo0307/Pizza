@@ -7,7 +7,6 @@ import lottie from "lottie-web";
 import Vegas from "../../../images/pizza/vegan.png";
 import { ProductList } from "../../../Types/interface/indx";
 
-
 export const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();
   const container = useRef<any>(null);
@@ -51,12 +50,11 @@ export const ShoppingCart: React.FC = () => {
       },
     ],
   });
+  const { id, price, img, name, description, additions, veg } = productData;
 
   const changeCount = (e: any) => {
     setCount(e.currentTarget.value);
   };
-
-  const {id, price, img, name, description, additions, veg} = productData;
 
   const productItem = {
     id,
@@ -67,7 +65,7 @@ export const ShoppingCart: React.FC = () => {
     additions,
     veg,
     count: Number(count),
-    totalCost: Number(count) * productData.price,
+    totalCost: Number(count) * price,
   };
 
   useEffect(() => {
@@ -144,8 +142,12 @@ export const ShoppingCart: React.FC = () => {
               </div>
             </div>
           ))}
-          {item.productList.length ? (
-            <Link to="/orders" className="btn" onClick={() => dispatch(shopToogle())}>
+          {data.length ? (
+            <Link
+              to="/orders"
+              className="btn"
+              onClick={() => dispatch(shopToogle())}
+            >
               order now ({item.total > 0 ? item.total : 0})$
             </Link>
           ) : null}
@@ -156,16 +158,16 @@ export const ShoppingCart: React.FC = () => {
         <div className="modal_container">
           <div className="modal_image_block">
             <div className="price">
-              $<span>{productData.price}</span>
+              $<span>{price}</span>
             </div>
-            {productData.veg ? (
+            {veg ? (
               <div className="vegan">
                 <span>
                   <img className="vegan-img" src={Vegas} alt="" />
                 </span>
               </div>
             ) : null}
-            <img src={productData.img} alt="" />
+            <img src={img} alt="" />
             <input
               type="number"
               min={1}
@@ -179,11 +181,11 @@ export const ShoppingCart: React.FC = () => {
           </div>
 
           <div className="content">
-            <h1 className="pizza_name">{productData.name}</h1>
+            <h1 className="pizza_name">{name}</h1>
             <div className="content_pizza">
-              <p className="pizza_description">{productData.description}</p>
+              <p className="pizza_description">{description}</p>
 
-              <h2 className="addition">Add to {productData.name}</h2>
+              <h2 className="addition">Add to {name}</h2>
 
               <div className="addition_content">
                 <input
@@ -191,13 +193,16 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="cheese_board"
                   value="cheese_board"
-                  onClick={() => additions[0].cheese_board[0].selected = !additions[0].cheese_board[0].selected}
+                  onClick={() => {
+                    additions[0].cheese_board[0].selected =
+                      !additions[0].cheese_board[0].selected;
+                  }}
                 />
                 <p className="addition_title">
-                  {productData.additions[0].cheese_board[0].title}
+                  {additions[0].cheese_board[0].title}
                 </p>
                 <p className="addition_price">
-                  +{productData.additions[0].cheese_board[0].price}$
+                  +{additions[0].cheese_board[0].price}$
                 </p>
               </div>
 
@@ -207,14 +212,13 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="meat"
                   value="meat"
-                  onClick={() => additions[0].meat[0].selected = !additions[0].meat[0].selected}
+                  onClick={() =>
+                    (additions[0].meat[0].selected =
+                      !additions[0].meat[0].selected)
+                  }
                 />
-                <p className="addition_title">
-                  {productData.additions[0].meat[0].title}
-                </p>
-                <p className="addition_price">
-                  +{productData.additions[0].meat[0].price}$
-                </p>
+                <p className="addition_title">{additions[0].meat[0].title}</p>
+                <p className="addition_price">+{additions[0].meat[0].price}$</p>
               </div>
 
               <div className="addition_content">
@@ -223,13 +227,16 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="cheese_mix"
                   value="cheese_mix"
-                  onClick={() => additions[0].cheese_mix[0].selected = !additions[0].cheese_mix[0].selected}
+                  onClick={() =>
+                    (additions[0].cheese_mix[0].selected =
+                      !additions[0].cheese_mix[0].selected)
+                  }
                 />
                 <p className="addition_title">
-                  {productData.additions[0].cheese_mix[0].title}
+                  {additions[0].cheese_mix[0].title}
                 </p>
                 <p className="addition_price">
-                  +{productData.additions[0].cheese_mix[0].price}$
+                  +{additions[0].cheese_mix[0].price}$
                 </p>
               </div>
             </div>

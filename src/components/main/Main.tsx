@@ -5,7 +5,7 @@ import { Footer } from "../footer/footer";
 import { HomeBanner } from "../home-banner/homeBanner";
 import { Menu } from "../menu/menu";
 
-export function Main() {
+export const Main = () => {
   return (
     <>
       <HomeBanner />

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Home1 from "../../images/home/home-img-1.png";
 import Home2 from "../../images/home/home-img-2.png";
 import Home3 from "../../images/home/home-img-3.png";
 
-export function HomeBanner() {
+export const HomeBanner = () => {
   const [indx, setIndx] = useState<number>(0);
   const contentSlider: Array<{
     img: string;

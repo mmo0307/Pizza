@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Order() {
+export const Order = () => {
   return (
     <>
       <section className="order" id="order">
@@ -73,8 +73,6 @@ export function Order() {
                   <select name="method" className="box">
                     <option value="cash on delivery">cash on delivery</option>
                     <option value="credit card">credit card</option>
-                    <option value="paytm">paytm</option>
-                    <option value="paypal">paypal</option>
                   </select>
                 </div>
                 <div className="inputBox">
@@ -86,28 +84,6 @@ export function Order() {
                     required
                     placeholder="e.g. flat no."
                     maxLength={50}
-                  />
-                </div>
-                <div className="inputBox">
-                  <span>address line 02 :</span>
-                  <input
-                    type="text"
-                    name="street"
-                    className="box"
-                    required
-                    placeholder="e.g. street name."
-                    maxLength={50}
-                  />
-                </div>
-                <div className="inputBox">
-                  <span>pin code :</span>
-                  <input
-                    type="number"
-                    name="pin_code"
-                    className="box"
-                    required
-                    placeholder="e.g. 123456"
-                    min="0"
                   />
                 </div>
               </div>
@@ -124,4 +100,4 @@ export function Order() {
       </section>
     </>
   );
-}
+};

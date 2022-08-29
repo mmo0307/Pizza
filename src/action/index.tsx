@@ -1,4 +1,4 @@
-import { ProductList } from "../Types/interface/indx";
+import { ProductList } from "../Types/interface";
 
 export const accountToogle = () => ({
   type: "accountToogle",

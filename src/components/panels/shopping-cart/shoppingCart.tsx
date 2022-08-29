@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { Modal } from "../../modal/modal";
 import lottie from "lottie-web";
 import Vegas from "../../../images/pizza/vegan.png";
-import { ProductList } from "../../../Types/interface/indx";
+import { ProductList } from "../../../Types/interface";
+import { v4 as uuidv4 } from 'uuid';
 
 export const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();
@@ -50,13 +51,14 @@ export const ShoppingCart: React.FC = () => {
       },
     ],
   });
-  const { id, price, img, name, description, additions, veg } = productData;
-
+  
   const cheese_board = useRef<HTMLInputElement>(null);
   const meat = useRef<HTMLInputElement>(null);
   const cheese_mix = useRef<HTMLInputElement>(null);
 
-  const ClearCheckBox = () => {
+  const { id, price, img, name, description, additions, veg } = productData;
+
+  const clearCheckBox = () => {
     if (null !== cheese_board.current) {
       if(cheese_board.current.checked === true) {
         cheese_board.current.checked = !cheese_board.current.checked;
@@ -125,7 +127,7 @@ export const ShoppingCart: React.FC = () => {
           {!item.productList.length ? <div ref={container}></div> : null}
 
           {data.map((item: ProductList, indx: number) => (
-            <div className="box" key={`${indx}`}>
+            <div className="box" key={uuidv4()}>
               <a
                 href="#"
                 className="fas fa-times"
@@ -275,7 +277,7 @@ export const ShoppingCart: React.FC = () => {
               className="btn"
               onClick={() => {
                 dispatch(changeItem(productItem));
-                ClearCheckBox();
+                clearCheckBox();
                 setActive(false);
               }}
             >

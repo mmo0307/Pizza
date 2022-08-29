@@ -1,4 +1,5 @@
-import { ActionType, StoreState } from "../../Types/interface/indx";
+import { ActionType, StoreState } from "../../Types/interface";
+
 
 const initialState: StoreState = {
  // productList: JSON.parse(localStorage.getItem('productItem') || '[]'),

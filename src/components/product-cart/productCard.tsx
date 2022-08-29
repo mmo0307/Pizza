@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../action";
 import Vegas from "../../images/pizza/vegan.png";
-import { ProductList } from "../../Types/interface/indx";
+import { ProductList } from "../../Types/interface";
 
 export const ProductCard: React.FC<{ data: ProductList }> = ({ data }) => {
   const { id, price, img, name, veg, description, additions } = data;

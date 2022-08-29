@@ -7,7 +7,7 @@ import {
   ordersToogle,
   shopToogle,
 } from "../../action";
-import { ProductList } from "../../Types/interface/indx";
+import { ProductList } from "../../Types/interface";
 import { Account } from "../panels/account/account";
 import { OrderPanel } from "../panels/order/orderPanel";
 import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";

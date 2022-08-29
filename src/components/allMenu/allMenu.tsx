@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { ProductCard } from "../product-cart/productCard";
 import axios from "axios";
 import lottie from "lottie-web";
-import { ProductList } from "../../Types/interface/indx";
+import { ProductList } from "../../Types/interface";
+import { v4 as uuidv4 } from 'uuid';
 
 export function AllMenu() {
   const [data_product, setData] = useState([]);
@@ -43,8 +44,8 @@ export function AllMenu() {
           ></div>
         ) : null}
         <div className="box-container">
-          {data_product.map((data: ProductList, indx: number) => {
-            return <ProductCard key={indx} data={data} />;
+          {data_product.map((data: ProductList) => {
+            return <ProductCard key={uuidv4()} data={data} />;
           })}
         </div>
       </section>

@@ -52,6 +52,30 @@ export const ShoppingCart: React.FC = () => {
   });
   const { id, price, img, name, description, additions, veg } = productData;
 
+  const cheese_board = useRef<HTMLInputElement>(null);
+  const meat = useRef<HTMLInputElement>(null);
+  const cheese_mix = useRef<HTMLInputElement>(null);
+
+  const ClearCheckBox = () => {
+    if (null !== cheese_board.current) {
+      if(cheese_board.current.checked === true) {
+        cheese_board.current.checked = !cheese_board.current.checked;
+      }
+    }
+
+    if (null !== meat.current) {
+      if(meat.current.checked === true) {
+        meat.current.checked = !meat.current.checked;
+      }
+    }
+
+    if (null !== cheese_mix.current) {
+      if(cheese_mix.current.checked === true) {
+        cheese_mix.current.checked = !cheese_mix.current.checked;
+      }
+    }
+  };
+
   const changeCount = (e: any) => {
     setCount(e.currentTarget.value);
   };
@@ -122,12 +146,12 @@ export const ShoppingCart: React.FC = () => {
               ) : null}
               <img src={item.img} alt="" />
               <div className="content">
-                <p>
+                <span>
                   {item.name}{" "}
-                  <span>
-                    ( ${item.price}/- x {item.count} )
-                  </span>
-                </p>
+                  <p className="price_count_product">
+                    ( ${item.price} - x {item.count} )
+                  </p>
+                </span>
                 <div>
                   <button
                     onClick={() => {
@@ -189,6 +213,8 @@ export const ShoppingCart: React.FC = () => {
 
               <div className="addition_content">
                 <input
+                  ref={cheese_board}
+                  //checked={true}
                   className="choice_addition"
                   type="checkbox"
                   name="cheese_board"
@@ -208,6 +234,7 @@ export const ShoppingCart: React.FC = () => {
 
               <div className="addition_content">
                 <input
+                  ref={meat}
                   className="choice_addition"
                   type="checkbox"
                   name="meat"
@@ -223,6 +250,7 @@ export const ShoppingCart: React.FC = () => {
 
               <div className="addition_content">
                 <input
+                  ref={cheese_mix}
                   className="choice_addition"
                   type="checkbox"
                   name="cheese_mix"
@@ -245,7 +273,11 @@ export const ShoppingCart: React.FC = () => {
           <div className="bottom_button">
             <button
               className="btn"
-              onClick={() => dispatch(changeItem(productItem))}
+              onClick={() => {
+                dispatch(changeItem(productItem));
+                ClearCheckBox();
+                setActive(false);
+              }}
             >
               Change
             </button>

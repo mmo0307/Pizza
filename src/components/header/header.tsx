@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  accountToogle,
-  menuToogle,
-  ordersToogle,
-  shopToogle,
-} from "../../action/toogle/toogle";
+import { accountToogle, menuToogle, ordersToogle, shopToogle } from "../../reducer/toogleReducer/toogleReducer";
 import { ProductList } from "../../Types/interface";
 import { Account } from "../panels/account/account";
 import { OrderPanel } from "../panels/order/orderPanel";

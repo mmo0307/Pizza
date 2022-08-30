@@ -5,7 +5,7 @@ import lottie from "lottie-web";
 import { ProductList } from "../../Types/interface";
 import { v4 as uuidv4 } from 'uuid';
 
-export function AllMenu() {
+export const AllMenu = () => {
   const [data_product, setData] = useState([]);
   const [loader, setloader] = useState<boolean>(true);
   const container = useRef<any>(null);
@@ -23,11 +23,11 @@ export function AllMenu() {
   useEffect(() => {
     axios
       .get("https://63000cf734344b6431048186.mockapi.io/pizza_item")
-      .then(function (response) {
+      .then((response) => {
         setData(response.data);
         setloader(false);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.error(error);
       });
   }, []);

@@ -24,11 +24,11 @@ export const Menu = () => {
   useEffect(() => {
     axios
       .get("https://63000cf734344b6431048186.mockapi.io/pizza_item")
-      .then(function (response) {
+      .then((response) => {
         setData(response.data);
         setloader(false);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.error(error);
       });
   }, []);

@@ -1,10 +1,4 @@
-import { createReducer } from "@reduxjs/toolkit";
-import {
-  accountToogle,
-  menuToogle,
-  ordersToogle,
-  shopToogle,
-} from "../../action/toogle/toogle";
+import { createSlice } from "@reduxjs/toolkit";
 import { ToogleState } from "../../Types/interface";
 
 const initialState = {
@@ -14,18 +8,26 @@ const initialState = {
   menu: false,
 } as ToogleState;
 
-export const toogleReducer = createReducer(initialState, (builder) => {
-  builder
-    .addCase(accountToogle, (state, action) => {
+const toogleReducer = createSlice({
+  name: "toogle",
+  initialState,
+  reducers: {
+    accountToogle: (state) => {
       state.account = !state.account;
-    })
-    .addCase(menuToogle, (state, action) => {
+    },
+    menuToogle: (state) => {
       state.menu = !state.menu;
-    })
-    .addCase(ordersToogle, (state, action) => {
+    },
+    ordersToogle: (state) => {
       state.orders = !state.orders;
-    })
-    .addCase(shopToogle, (state, action) => {
+    },
+    shopToogle: (state) => {
       state.shop = !state.shop;
-    });
+    },
+  },
 });
+
+export default toogleReducer.reducer;
+
+export const { accountToogle, menuToogle, ordersToogle, shopToogle } =
+  toogleReducer.actions;

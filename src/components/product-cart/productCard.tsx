@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../action";
 import Vegas from "../../images/pizza/vegan.png";
+import { addToCart } from "../../reducer/productReducer/productReducer";
 import { ProductList } from "../../Types/interface";
 
 export const ProductCard: React.FC<{ data: ProductList }> = ({ data }) => {

@@ -4,7 +4,7 @@ import About1 from "../../images/about/about-1.svg";
 import About2 from "../../images/about/about-2.svg";
 import About3 from "../../images/about/about-3.svg";
 
-export function About() {
+export const About = () => {
   return (
     <section className="about" id="about">
     <h1 className="heading">about us</h1>

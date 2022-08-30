@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function Footer() {
+export const Footer = () => {
   return (
     <section className="footer" id="contact">
     <div className="box-container">

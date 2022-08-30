@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeItem, deleteItem } from "../../../action";
 import { Link } from "react-router-dom";
 import { Modal } from "../../modal/modal";
 import lottie from "lottie-web";
 import Vegas from "../../../images/pizza/vegan.png";
 import { ProductList } from "../../../Types/interface";
 import { v4 as uuidv4 } from 'uuid';
-import { shopToogle } from "../../../action/toogle/toogle";
+import { shopToogle } from "../../../reducer/toogleReducer/toogleReducer";
+import { changeItem, deleteItem } from "../../../reducer/productReducer/productReducer";
 
 export const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();

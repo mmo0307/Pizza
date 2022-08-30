@@ -1,15 +1,16 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { ActionType, StoreState } from "../../Types/interface";
-import { addToCart, deleteItem, changeItem } from "../../action";
 
 const initialState = {
   productList: [],
   total: 0,
 } as StoreState;
 
-export const productReducer = createReducer(initialState, (builder) => {
-  builder
-    .addCase(addToCart, (state, action:ActionType) => {
+const productReducer = createSlice({
+  name: "product",
+  initialState,
+  reducers: {
+    addToCart: (state, action: ActionType) => {
       const findItem = state.productList.find(
         (obj) => obj.id === action.payload.id
       );
@@ -31,8 +32,8 @@ export const productReducer = createReducer(initialState, (builder) => {
         total += item.totalCost ?? 0;
       });
       state.total = total;
-    })
-    .addCase(deleteItem, (state, action:ActionType) => {
+    },
+    deleteItem: (state, action: ActionType) => {
       state.productList = state.productList.filter(
         (item) => item.id !== action.payload
       );
@@ -41,8 +42,8 @@ export const productReducer = createReducer(initialState, (builder) => {
         total += item.totalCost ?? 0;
       });
       state.total = total;
-    })
-    .addCase(changeItem, (state, action:ActionType) => {
+    },
+    changeItem: (state, action: ActionType) => {
       console.log(state);
       console.log(action.payload);
       console.log(state);
@@ -52,5 +53,10 @@ export const productReducer = createReducer(initialState, (builder) => {
         total += item.totalCost ?? 0;
       });
       state.total = total;
-    });
+    },
+  },
 });
+
+export default productReducer.reducer;
+
+export const { addToCart, deleteItem, changeItem } = productReducer.actions;

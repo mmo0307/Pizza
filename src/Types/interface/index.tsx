@@ -40,6 +40,7 @@ export interface ProductList {
 
 export interface StoreState {
   productList: ProductList[];
+  total: number;
 }
 
 export interface ToogleState {

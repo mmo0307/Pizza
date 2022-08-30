@@ -1,14 +1,15 @@
+import { createReducer } from "@reduxjs/toolkit";
 import { ActionType, StoreState } from "../../Types/interface";
+import { addToCart, deleteItem, changeItem } from "../../action";
 
+const initialState = {
+  productList: [],
+  total: 0,
+} as StoreState;
 
-const initialState: StoreState = {
- // productList: JSON.parse(localStorage.getItem('productItem') || '[]'),
-  productList: []
-};
-
-export const productReducer = (state = initialState, action: ActionType) => {
-  switch (action.type) {
-    case "ADD_CART": {
+export const productReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(addToCart, (state, action:ActionType) => {
       const findItem = state.productList.find(
         (obj) => obj.id === action.payload.id
       );
@@ -29,23 +30,19 @@ export const productReducer = (state = initialState, action: ActionType) => {
       state.productList.forEach((item) => {
         total += item.totalCost ?? 0;
       });
-
-      //localStorage.setItem('productItem', JSON.stringify({ ...state, total }));
-
-      return { ...state, total };
-    }
-    case "DELETE_CART": {
+      state.total = total;
+    })
+    .addCase(deleteItem, (state, action:ActionType) => {
       state.productList = state.productList.filter(
         (item) => item.id !== action.payload
       );
-      let total = 0;
+      let total: number = 0;
       state.productList.forEach((item) => {
         total += item.totalCost ?? 0;
       });
-
-      return { ...state, total };
-    }
-    case "CHANGE_CART": {
+      state.total = total;
+    })
+    .addCase(changeItem, (state, action:ActionType) => {
       console.log(state);
       console.log(action.payload);
       console.log(state);
@@ -54,11 +51,6 @@ export const productReducer = (state = initialState, action: ActionType) => {
       state.productList.forEach((item) => {
         total += item.totalCost ?? 0;
       });
-
-      //productList: action.payload,
-      return { ...state, total };
-    }
-    default:
-      return state;
-  }
-};
+      state.total = total;
+    });
+});

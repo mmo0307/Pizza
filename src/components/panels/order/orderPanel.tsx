@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { ordersToogle } from '../../../action';
+import { ordersToogle } from '../../../action/toogle/toogle';
 
 export function OrderPanel() {
   const flag = useSelector((state: any) => state.toogle.orders);

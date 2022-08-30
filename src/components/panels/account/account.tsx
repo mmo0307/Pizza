@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { accountToogle } from '../../../action';
+import { accountToogle } from '../../../action/toogle/toogle';
 
 export function Account() {
   const flag = useSelector((state: any) => state.toogle.account);

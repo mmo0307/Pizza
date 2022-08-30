@@ -1,40 +1,31 @@
-interface StoreState {
-  account: boolean;
-  orders: boolean;
-  shop: boolean;
-  menu: boolean;
-}
+import { createReducer } from "@reduxjs/toolkit";
+import {
+  accountToogle,
+  menuToogle,
+  ordersToogle,
+  shopToogle,
+} from "../../action/toogle/toogle";
+import { ToogleState } from "../../Types/interface";
 
-interface ActionType {
-  type: string;
-}
-
-const initialState: StoreState = {
+const initialState = {
   account: false,
   orders: false,
   shop: false,
   menu: false,
-};
+} as ToogleState;
 
-export const toogleReducer = (state = initialState, action: ActionType) => {
-  switch (action.type) {
-    case "accountToogle": {
+export const toogleReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(accountToogle, (state, action) => {
       state.account = !state.account;
-      return { ...state };
-    }
-    case "ordersToogle": {
-      state.orders = !state.orders;
-      return { ...state };
-    }
-    case "shopToogle": {
-      state.shop = !state.shop;
-      return { ...state };
-    }
-    case "menuToogle": {
+    })
+    .addCase(menuToogle, (state, action) => {
       state.menu = !state.menu;
-      return { ...state };
-    }
-    default:
-      return state;
-  }
-};
+    })
+    .addCase(ordersToogle, (state, action) => {
+      state.orders = !state.orders;
+    })
+    .addCase(shopToogle, (state, action) => {
+      state.shop = !state.shop;
+    });
+});

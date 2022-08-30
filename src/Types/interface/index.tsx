@@ -41,3 +41,10 @@ export interface ProductList {
 export interface StoreState {
   productList: ProductList[];
 }
+
+export interface ToogleState {
+  account: boolean;
+  orders: boolean;
+  shop: boolean;
+  menu: boolean;
+}

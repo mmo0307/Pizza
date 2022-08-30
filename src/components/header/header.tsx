@@ -6,7 +6,7 @@ import {
   menuToogle,
   ordersToogle,
   shopToogle,
-} from "../../action";
+} from "../../action/toogle/toogle";
 import { ProductList } from "../../Types/interface";
 import { Account } from "../panels/account/account";
 import { OrderPanel } from "../panels/order/orderPanel";
@@ -15,13 +15,13 @@ import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";
 export const Header = () => {
   const dispatch = useDispatch();
   const flag = useSelector((state: any) => state.toogle.menu);
-  const item = useSelector((state:any) => state.product)
+  const item = useSelector((state: any) => state.product);
   const [data, setData] = useState<ProductList[]>([]);
 
   useEffect(() => {
     setData(item.productList);
   }, [item]);
-  
+
   return (
     <>
       <header className="header">
@@ -69,4 +69,4 @@ export const Header = () => {
       <ShoppingCart />
     </>
   );
-}
+};

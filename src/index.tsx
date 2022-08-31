@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 
 const store = configureStore({
   reducer,
-  devTools: true
+  devTools: true,
 });
 
 root.render(

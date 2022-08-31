@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { ActionType, StoreState } from "../../Types/interface";
 
 const initialState = {
@@ -44,9 +44,21 @@ const productReducer = createSlice({
       state.total = total;
     },
     changeItem: (state, action: ActionType) => {
-      console.log(state);
+      console.log(current(state));
       console.log(action.payload);
-      console.log(state);
+      const { productItem, meat, cheese_mix, cheese_board } = action.payload;
+
+      for (let i = 0; i < state.productList.length; i++) {
+        if (current(state.productList[i]).id === productItem.id) {
+          state.productList[i].additions[0].meat[0].selected = meat;
+          state.productList[i].additions[0].cheese_mix[0].selected = cheese_mix;
+          state.productList[i].additions[0].cheese_board[0].selected = cheese_board;
+        }
+      }
+
+      console.log("----------");
+      console.log(action.payload);
+      console.log(current(state));
 
       let total = 0;
       state.productList.forEach((item) => {
@@ -57,6 +69,6 @@ const productReducer = createSlice({
   },
 });
 
-export default productReducer.reducer;
-
 export const { addToCart, deleteItem, changeItem } = productReducer.actions;
+
+export default productReducer.reducer;

@@ -5,9 +5,12 @@ import { Modal } from "../../modal/modal";
 import lottie from "lottie-web";
 import Vegas from "../../../images/pizza/vegan.png";
 import { ProductList } from "../../../Types/interface";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { shopToogle } from "../../../reducer/toogleReducer/toogleReducer";
-import { changeItem, deleteItem } from "../../../reducer/productReducer/productReducer";
+import {
+  changeItem,
+  deleteItem,
+} from "../../../reducer/productReducer/productReducer";
 
 export const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();
@@ -52,7 +55,7 @@ export const ShoppingCart: React.FC = () => {
       },
     ],
   });
-  
+
   const cheese_board = useRef<HTMLInputElement>(null);
   const meat = useRef<HTMLInputElement>(null);
   const cheese_mix = useRef<HTMLInputElement>(null);
@@ -61,19 +64,19 @@ export const ShoppingCart: React.FC = () => {
 
   const clearCheckBox = () => {
     if (null !== cheese_board.current) {
-      if(cheese_board.current.checked === true) {
+      if (cheese_board.current.checked === true) {
         cheese_board.current.checked = !cheese_board.current.checked;
       }
     }
 
     if (null !== meat.current) {
-      if(meat.current.checked === true) {
+      if (meat.current.checked === true) {
         meat.current.checked = !meat.current.checked;
       }
     }
 
     if (null !== cheese_mix.current) {
-      if(cheese_mix.current.checked === true) {
+      if (cheese_mix.current.checked === true) {
         cheese_mix.current.checked = !cheese_mix.current.checked;
       }
     }
@@ -129,11 +132,10 @@ export const ShoppingCart: React.FC = () => {
 
           {data.map((item: ProductList, indx: number) => (
             <div className="box" key={uuidv4()}>
-              <a
-                href="#"
+              <div
                 className="fas fa-times"
                 onClick={() => dispatch(deleteItem(item.id))}
-              ></a>
+              ></div>
               <button
                 onClick={() => setActive(true)}
                 type="submit"
@@ -222,10 +224,10 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="cheese_board"
                   value="cheese_board"
-                  onClick={() => {
-                    additions[0].cheese_board[0].selected =
-                      !additions[0].cheese_board[0].selected;
-                  }}
+                  // onClick={() => {
+                  //   additions[0].cheese_board[0].selected =
+                  //     !additions[0].cheese_board[0].selected;
+                  // }}
                 />
                 <p className="addition_title">
                   {additions[0].cheese_board[0].title}
@@ -242,10 +244,11 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="meat"
                   value="meat"
-                  onClick={() =>
-                    (additions[0].meat[0].selected =
-                      !additions[0].meat[0].selected)
-                  }
+                  //checked={true}
+                  // onClick={() =>
+                  //   (additions[0].meat[0].selected =
+                  //     !additions[0].meat[0].selected)
+                  // }
                 />
                 <p className="addition_title">{additions[0].meat[0].title}</p>
                 <p className="addition_price">+{additions[0].meat[0].price}$</p>
@@ -258,10 +261,11 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="cheese_mix"
                   value="cheese_mix"
-                  onClick={() =>
-                    (additions[0].cheese_mix[0].selected =
-                      !additions[0].cheese_mix[0].selected)
-                  }
+                  //checked={true}
+                  // onClick={() =>
+                  //   (additions[0].cheese_mix[0].selected =
+                  //     !additions[0].cheese_mix[0].selected)
+                  // }
                 />
                 <p className="addition_title">
                   {additions[0].cheese_mix[0].title}
@@ -277,7 +281,7 @@ export const ShoppingCart: React.FC = () => {
             <button
               className="btn"
               onClick={() => {
-                dispatch(changeItem(productItem));
+                dispatch(changeItem({productItem, meat: true, cheese_mix: true, cheese_board: true }));
                 clearCheckBox();
                 setActive(false);
               }}

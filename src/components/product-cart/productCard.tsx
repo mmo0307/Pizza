@@ -37,7 +37,7 @@ export const ProductCard: React.FC<{ data: ProductCartList }> = ({ data }) => {
           </span>
         </div>
       ) : null}
-      {/* <img className="pizza-img" src={img} alt="" /> */}
+      <img className="pizza-img" src={img} alt="" />
       <div className="name">{name}</div>
       <div className="description">{description}</div>
       <div className="price_count">

@@ -6,7 +6,7 @@
     "price": 70,
     "weight": 460,
     "description": "Cheese",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.7d3b623ceb66e87fc7247fa81c6cfdc1.1.jpg?width=800",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-4_r56zg3.png",
     "additions": [
       {
         "cheese_board": [
@@ -40,7 +40,7 @@
     "price": 80,
     "weight": 530,
     "description": "Spiced paneeer, Onion,Green Capsicum & Red Paprika in Tandoori Sauce",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-paneer.954d93452557209bebe0b7f49e776ba2.1.jpg?width=522",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321866/pizza-16_nra1lm.png",
     "additions": [
       {
         "cheese_board": [
@@ -74,7 +74,7 @@
     "price": 85,
     "weight": 500,
     "description": "Black Olives,Green Capsicum, Mushroom, Onion,Red Paprika, Sweet Corn",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veggie-supreme.403f5e6cf9abb29247a97732c8aae860.1.jpg?width=800",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321866/pizza-19_xtfivc.png",
     "additions": [
       {
         "cheese_board": [
@@ -108,41 +108,7 @@
     "price": 90,
     "weight": 500,
     "description": "Spiced Paneer, Herbed Onion&Green Capsicum, Red Paprika",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/double-paneer-supreme.9d215eb865735ce44225317997153b73.1.jpg?width=522",
-    "additions": [
-      {
-        "cheese_board": [
-          {
-            "title": "Cheese board",
-            "price": 20,
-            "selected": false
-          }
-        ],
-        "meat": [
-          {
-            "title": "Meat",
-            "price": 45,
-            "selected": false
-          }
-        ],
-        "cheese_mix": [
-          {
-            "title": "Cheese mix",
-            "price": 50,
-            "selected": false
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Veggie Kebab Surprise",
-    "veg": true,
-    "price": 95,
-    "weight": 500,
-    "description": "Veg Kebab,Onion,Green Capsicum,Tomato & Sweet Corn in Tandoori Sauce",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veg-kebab-surprise.6895b792bfdd274d1bb822ff8dc1a69b.1.jpg?width=522",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321866/pizza-17_c8ciy3.png",
     "additions": [
       {
         "cheese_board": [
@@ -171,12 +137,12 @@
   },
   {
     "id": 5,
-    "name": "Chicken Supreme",
-    "veg": false,
-    "price": 105,
+    "name": "Veggie Kebab Surprise",
+    "veg": true,
+    "price": 95,
     "weight": 500,
-    "description": "Herbed Chicken,Schezwan Chicken Meatball,Chicken Tikka",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-supreme.f29fa58b7f2a3ec307b6c0b44411f900.1.jpg?width=522",
+    "description": "Veg Kebab,Onion,Green Capsicum,Tomato & Sweet Corn in Tandoori Sauce",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321865/pizza-18_uxlqi0.png",
     "additions": [
       {
         "cheese_board": [
@@ -205,12 +171,12 @@
   },
   {
     "id": 6,
-    "name": "Chicken Tikka Supreme",
+    "name": "Chicken Supreme",
     "veg": false,
-    "price": 75,
+    "price": 105,
     "weight": 500,
-    "description": "Chicken Tikka,Chicken Malai Tikka,Onion,Red Paprika",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-tikka-supreme.d118fcb7a45549b90fc6313f8b45a9cf.1.jpg?width=522",
+    "description": "Herbed Chicken,Schezwan Chicken Meatball,Chicken Tikka",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321865/pizza-15_g3pdbc.png",
     "additions": [
       {
         "cheese_board": [
@@ -239,12 +205,12 @@
   },
   {
     "id": 7,
-    "name": "Triple Chicken Feast",
+    "name": "Chicken Tikka Supreme",
     "veg": false,
-    "price": 70,
+    "price": 75,
     "weight": 500,
-    "description": "Schezwan Chicken Meatball Herbed Chicken,Chicken Sausage,Geen Capsicum, Onion,Red Paprika",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/triple-chicken-feast.21e57422a5579843b4722a067fbda8ca.1.jpg?width=522",
+    "description": "Chicken Tikka,Chicken Malai Tikka,Onion,Red Paprika",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321865/pizza-14_pmjldl.png",
     "additions": [
       {
         "cheese_board": [
@@ -273,12 +239,12 @@
   },
   {
     "id": 8,
-    "name": "Chicken Tikka",
+    "name": "Triple Chicken Feast",
     "veg": false,
-    "price": 60,
+    "price": 70,
     "weight": 500,
-    "description": "Chicken Tikka, Onion, Tomato",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-tikka.4e3ef28838886936da1a2280543cfae8.1.jpg?width=522",
+    "description": "Schezwan Chicken Meatball Herbed Chicken,Chicken Sausage,Geen Capsicum, Onion,Red Paprika",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321865/pizza-8_tgviby.png",
     "additions": [
       {
         "cheese_board": [
@@ -307,12 +273,12 @@
   },
   {
     "id": 9,
-    "name": "Double Chicken Sausage",
+    "name": "Chicken Tikka",
     "veg": false,
-    "price": 69,
+    "price": 60,
     "weight": 500,
-    "description": "Chicken Sausage",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/double-chicken-sausage.27693ba787c68a763bb3f0e397de0019.1.jpg?width=522",
+    "description": "Chicken Tikka, Onion, Tomato",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321865/pizza-13_w4numf.png",
     "additions": [
       {
         "cheese_board": [
@@ -341,12 +307,12 @@
   },
   {
     "id": 10,
-    "name": "Spiced Chicken Meatballs",
+    "name": "Double Chicken Sausage",
     "veg": false,
-    "price": 78,
+    "price": 69,
     "weight": 500,
-    "description": "Schezwan Chicken Meatball Onion",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/spiced-chicken-meatballs.fcb515f6af388d6e30df81ca2968798c.1.jpg?width=522",
+    "description": "Chicken Sausage",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321865/pizza-9_mjtxpg.png",
     "additions": [
       {
         "cheese_board": [
@@ -375,12 +341,12 @@
   },
   {
     "id": 11,
-    "name": "Double Cheese",
-    "veg": true,
-    "price": 87,
+    "name": "Spiced Chicken Meatballs",
+    "veg": false,
+    "price": 78,
     "weight": 500,
-    "description": "Extra Cheese on Cheese",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/double-cheese.f8ac8046d97de45670aa7d41b5cf8db6.1.jpg?width=522",
+    "description": "Schezwan Chicken Meatball Onion",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321865/pizza-10_nteevw.png",
     "additions": [
       {
         "cheese_board": [
@@ -409,12 +375,12 @@
   },
   {
     "id": 12,
-    "name": "Chicken Pepper Crunch",
-    "veg": false,
-    "price": 90,
+    "name": "Double Cheese",
+    "veg": true,
+    "price": 87,
     "weight": 500,
-    "description": "Herbed Chicken, Onion, Green Capsicum, Red Capsicum ",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-pepper-crunch.ad90bc84672d7cd34351745f4b77fe9c.1.jpg",
+    "description": "Extra Cheese on Cheese",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-12_walhiz.png",
     "additions": [
       {
         "cheese_board": [
@@ -443,12 +409,12 @@
   },
   {
     "id": 13,
-    "name": "Italian Chicken Feast",
+    "name": "Chicken Pepper Crunch",
     "veg": false,
-    "price": 60,
+    "price": 90,
     "weight": 500,
     "description": "Herbed Chicken, Onion, Green Capsicum, Red Capsicum ",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/italian-chicken-feast.1ccf57b605633e47ca4c6455340a5d2e.1.jpg",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-7_oruavv.png",
     "additions": [
       {
         "cheese_board": [
@@ -477,12 +443,12 @@
   },
   {
     "id": 14,
-    "name": "Corn & Cheese",
-    "veg": true,
-    "price": 70,
+    "name": "Italian Chicken Feast",
+    "veg": false,
+    "price": 60,
     "weight": 500,
-    "description": "Cheese ,Sweet Corn",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/corn.4f5188ab4391cb45d4a4ed9e849f1e32.1.jpg",
+    "description": "Herbed Chicken, Onion, Green Capsicum, Red Capsicum ",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-11_dmzuck.png",
     "additions": [
       {
         "cheese_board": [
@@ -511,12 +477,12 @@
   },
   {
     "id": 15,
-    "name": "Tandoori Onion",
+    "name": "Corn & Cheese",
     "veg": true,
-    "price": 90,
+    "price": 70,
     "weight": 500,
-    "description": "Cheese & Onion in Tandoori sause",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-onion.27d62d7a89f3fd2bb2eb2b9f91d6223b.1.jpg",
+    "description": "Cheese ,Sweet Corn",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-1_a5ye3v.png",
     "additions": [
       {
         "cheese_board": [
@@ -545,12 +511,12 @@
   },
   {
     "id": 16,
-    "name": "Chicken Pepperoni",
-    "veg": false,
-    "price": 105,
+    "name": "Tandoori Onion",
+    "veg": true,
+    "price": 90,
     "weight": 500,
-    "description": "Cheese ,Chicken pepperoni",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-pepperoni.59a23d539b3675012fadb9e98b043216.1.jpg",
+    "description": "Cheese & Onion in Tandoori sause",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-5_aoq2vj.png",
     "additions": [
       {
         "cheese_board": [
@@ -579,12 +545,12 @@
   },
   {
     "id": 17,
-    "name": "Chicken N Corn Delight",
+    "name": "Chicken Pepperoni",
     "veg": false,
-    "price": 76,
+    "price": 105,
     "weight": 500,
     "description": "Cheese ,Chicken pepperoni",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-n-corn-delight.bc0460bc62d23a77e9db087010bcf00a.1.jpg",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-6_kcigon.png",
     "additions": [
       {
         "cheese_board": [
@@ -613,12 +579,46 @@
   },
   {
     "id": 18,
+    "name": "Chicken N Corn Delight",
+    "veg": false,
+    "price": 76,
+    "weight": 500,
+    "description": "Cheese ,Chicken pepperoni",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-2_vwwjw4.png",
+    "additions": [
+      {
+        "cheese_board": [
+          {
+            "title": "Cheese board",
+            "price": 20,
+            "selected": false
+          }
+        ],
+        "meat": [
+          {
+            "title": "Meat",
+            "price": 45,
+            "selected": false
+          }
+        ],
+        "cheese_mix": [
+          {
+            "title": "Cheese mix",
+            "price": 50,
+            "selected": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
     "name": "Farmers Pick",
     "veg": true,
     "price": 89,
     "weight": 500,
     "description": "Onion Herbed & Green Capsicum, Red Capsicum, Mushroom, Baby Corn",
-    "img": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/farmers-pick.fcd8cacee43fb94e173e5f04fdf2c2b5.1.jpg",
+    "img": "https://res.cloudinary.com/pizza-van/image/upload/v1662321864/pizza-3_xmiklb.png",
     "additions": [
       {
         "cheese_board": [

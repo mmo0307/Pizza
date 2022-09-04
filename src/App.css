@@ -840,6 +840,51 @@ section {
   transform: rotate(180deg);
 }
 
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs .tabs_title {
+  color: #000;
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0 10px;
+  outline: none;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  touch-action: manipulation;
+}
+
+.tabs .tabs_title:hover,
+.tabs .tabs_title:focus {
+  border-style: none;
+  background-color: var(--light-color);
+  color: #fff;
+}
+
+.tabs .tabs_title:disabled {
+  background-color: var(--red);
+  color: #fff;
+}
+
+.tabs .filter_price {
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
 .footer .box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));

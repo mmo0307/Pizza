@@ -2,7 +2,7 @@ export interface ActionType {
   type: string;
   payload: any;
 }
-export interface ProductList {
+export interface ProductCartList {
   id: number;
   name: string;
   img: string;
@@ -38,8 +38,12 @@ export interface ProductList {
   ];
 }
 
+export interface Product {
+  productList: ProductCartList[];
+}
+
 export interface StoreState {
-  productList: ProductList[];
+  productCartList: ProductCartList[];
   total: number;
 }
 

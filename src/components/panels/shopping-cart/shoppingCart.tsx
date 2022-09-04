@@ -4,24 +4,24 @@ import { Link } from "react-router-dom";
 import { Modal } from "../../modal/modal";
 import lottie from "lottie-web";
 import Vegas from "../../../images/pizza/vegan.png";
-import { ProductList } from "../../../Types/interface";
 import { v4 as uuidv4 } from "uuid";
 import { shopToogle } from "../../../reducer/toogleReducer/toogleReducer";
 import {
   changeItem,
   deleteItem,
-} from "../../../reducer/productReducer/productReducer";
+} from "../../../reducer/cartReducer/cartReducer";
+import { ProductCartList } from "../../../Types/interface";
 
 export const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();
   const container = useRef<any>(null);
   const flag = useSelector((state: any) => state.toogle.shop);
-  const item = useSelector((state: any) => state.product);
-  const [data, setData] = useState<ProductList[]>(item.productList);
+  const item = useSelector((state: any) => state.cart);
+  const [data, setData] = useState<ProductCartList[]>(item.productCartList);
   const [active, setActive] = useState<boolean>(false);
   const [productId, setProductId] = useState<number>(0);
   const [count, setCount] = useState<number>(1);
-  const [productData, setProductData] = useState<ProductList>({
+  const [productData, setProductData] = useState<ProductCartList>({
     id: 0,
     name: "",
     img: "",
@@ -106,10 +106,10 @@ export const ShoppingCart: React.FC = () => {
       autoplay: true,
       animationData: require("../../../constants/shop_cart.json"),
     });
-  }, [item.productList.length]);
+  }, [item.productCartList.length]);
 
   useEffect(() => {
-    setData(item.productList);
+    setData(item.productCartList);
   }, [item]);
 
   useEffect(() => {
@@ -128,9 +128,9 @@ export const ShoppingCart: React.FC = () => {
           <div id="close-cart">
             <span onClick={() => dispatch(shopToogle())}>close</span>
           </div>
-          {!item.productList.length ? <div ref={container}></div> : null}
+          {!item.productCartList.length ? <div ref={container}></div> : null}
 
-          {data.map((item: ProductList, indx: number) => (
+          {data.map((item: ProductCartList, indx: number) => (
             <div className="box" key={uuidv4()}>
               <div
                 className="fas fa-times"

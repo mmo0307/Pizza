@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Vegas from "../../images/pizza/vegan.png";
-import { addToCart } from "../../reducer/productReducer/productReducer";
-import { ProductList } from "../../Types/interface";
+import { addToCart } from "../../reducer/cartReducer/cartReducer";
+import { ProductCartList } from "../../Types/interface";
 
-export const ProductCard: React.FC<{ data: ProductList }> = ({ data }) => {
+export const ProductCard: React.FC<{ data: ProductCartList }> = ({ data }) => {
   const { id, price, img, name, veg, description, additions } = data;
   const dispatch = useDispatch();
   const [count, setCount] = useState<number>(1);
@@ -37,7 +37,7 @@ export const ProductCard: React.FC<{ data: ProductList }> = ({ data }) => {
           </span>
         </div>
       ) : null}
-      <img className="pizza-img" src={img} alt="" />
+      {/* <img className="pizza-img" src={img} alt="" /> */}
       <div className="name">{name}</div>
       <div className="description">{description}</div>
       <div className="price_count">

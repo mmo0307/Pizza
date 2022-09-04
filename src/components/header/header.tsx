@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { accountToogle, menuToogle, ordersToogle, shopToogle } from "../../reducer/toogleReducer/toogleReducer";
-import { ProductList } from "../../Types/interface";
+import { ProductCartList } from "../../Types/interface";
 import { Account } from "../panels/account/account";
 import { OrderPanel } from "../panels/order/orderPanel";
 import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";
@@ -10,11 +10,11 @@ import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";
 export const Header = () => {
   const dispatch = useDispatch();
   const flag = useSelector((state: any) => state.toogle.menu);
-  const item = useSelector((state: any) => state.product);
-  const [data, setData] = useState<ProductList[]>([]);
+  const item = useSelector((state: any) => state.cart);
+  const [data, setData] = useState<ProductCartList[]>([]);
 
   useEffect(() => {
-    setData(item.productList);
+    setData(item.productCartList);
   }, [item]);
 
   return (

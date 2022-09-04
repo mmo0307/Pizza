@@ -2,13 +2,45 @@ import React, { useEffect, useRef, useState } from "react";
 import { ProductCard } from "../product-cart/productCard";
 import axios from "axios";
 import lottie from "lottie-web";
-import { ProductList } from "../../Types/interface";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import { ProductCartList } from "../../Types/interface";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct, sortProduct } from "../../reducer/productReducer/productreducer";
+import { PIZZA_API } from "../../constants";
 
 export const AllMenu = () => {
-  const [data_product, setData] = useState([]);
+  const dispatch = useDispatch();
+  const product = useSelector((state: any) => state.product.productList);
   const [loader, setloader] = useState<boolean>(true);
   const container = useRef<any>(null);
+
+  const [currentTab, setCurrentTab] = useState<number>(0);
+  const tabs = [
+    {
+      id: 0,
+      tabTitle: "All",
+    },
+    {
+      id: 1,
+      tabTitle: "Vegan",
+    },
+    {
+      id: 2,
+      tabTitle: "Meat",
+    },
+  ];
+
+  useEffect(() => {
+    axios
+      .get(PIZZA_API)
+      .then((response) => {
+        dispatch(addProduct(response.data));
+        setloader(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   useEffect(() => {
     lottie.loadAnimation({
@@ -18,19 +50,7 @@ export const AllMenu = () => {
       autoplay: true,
       animationData: require("../../constants/pizza-loader.json"),
     });
-  }, [data_product.length]);
-
-  useEffect(() => {
-    axios
-      .get("https://63000cf734344b6431048186.mockapi.io/pizza_item")
-      .then((response) => {
-        setData(response.data);
-        setloader(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  }, [product.length]);
 
   return (
     <>
@@ -43,12 +63,56 @@ export const AllMenu = () => {
             ref={container}
           ></div>
         ) : null}
+
+        {!loader ? (
+          <div className="tabs">
+            {tabs.map((tab, i) => (
+              <button
+                className="tabs_title"
+                key={i}
+                disabled={currentTab === tab.id}
+                onClick={() => {
+                  setCurrentTab(i);
+                }}
+              >
+                {tab.tabTitle}
+              </button>
+            ))}
+            <select className="filter_price" name="" id="" onChange={(e) => dispatch(sortProduct(e.currentTarget.value))}>
+              <option value="low">Low - High (Price)</option>
+              <option value="high">High - Low (Price)</option>
+            </select>
+          </div>
+        ) : null}
+
         <div className="box-container">
-          {data_product.map((data: ProductList) => {
-            return <ProductCard key={uuidv4()} data={data} />;
-          })}
+          {currentTab === 0
+            ? product.map((data: ProductCartList) => {
+                return <ProductCard key={uuidv4()} data={data} />;
+              })
+            : null}
+
+          {currentTab === 1
+            ? product.map((data: ProductCartList) => {
+                return (
+                  data.veg === true && (
+                    <ProductCard key={uuidv4()} data={data} />
+                  )
+                );
+              })
+            : null}
+
+          {currentTab === 2
+            ? product.map((data: ProductCartList) => {
+                return (
+                  data.veg === false && (
+                    <ProductCard key={uuidv4()} data={data} />
+                  )
+                );
+              })
+            : null}
         </div>
       </section>
     </>
   );
-}
+};

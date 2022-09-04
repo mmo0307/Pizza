@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { ProductCard } from "../product-cart/productCard";
 import lottie from "lottie-web";
 import axios from "axios";
-import { ProductList } from "../../Types/interface";
 import { v4 as uuidv4 } from 'uuid';
+import { ProductCartList } from "../../Types/interface";
 
 export const Menu = () => {
   const [loader, setloader] = useState<boolean>(true);
@@ -47,7 +47,7 @@ export const Menu = () => {
       <h1 className="heading">our menu</h1>
 
       <div className="box-container">
-        {data_product.splice(0, 9).map((data: ProductList) => {
+        {data_product.splice(0, 9).map((data: ProductCartList) => {
           return <ProductCard key={uuidv4()} data={data} />;
         })}
       </div>

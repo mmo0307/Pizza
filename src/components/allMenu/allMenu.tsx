@@ -5,8 +5,8 @@ import lottie from "lottie-web";
 import { v4 as uuidv4 } from "uuid";
 import { ProductCartList } from "../../Types/interface";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, sortProduct } from "../../reducer/productReducer/productreducer";
 import { PIZZA_API } from "../../constants";
+import { addProduct, sortProduct } from "../../reducer/productReducer/productReducer";
 
 export const AllMenu = () => {
   const dispatch = useDispatch();

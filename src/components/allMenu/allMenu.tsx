@@ -6,7 +6,10 @@ import { v4 as uuidv4 } from "uuid";
 import { ProductCartList } from "../../Types/interface";
 import { useDispatch, useSelector } from "react-redux";
 import { PIZZA_API } from "../../constants";
-import { addProduct, sortProduct } from "../../reducer/productReducer/productReducer";
+import {
+  addProduct,
+  sortProduct,
+} from "../../reducer/productReducer/productReducer";
 
 export const AllMenu = () => {
   const dispatch = useDispatch();
@@ -78,7 +81,12 @@ export const AllMenu = () => {
                 {tab.tabTitle}
               </button>
             ))}
-            <select className="filter_price" name="" id="" onChange={(e) => dispatch(sortProduct(e.currentTarget.value))}>
+            <select
+              className="filter_price"
+              name=""
+              id=""
+              onChange={(e) => dispatch(sortProduct(e.currentTarget.value))}
+            >
               <option value="low">Low - High (Price)</option>
               <option value="high">High - Low (Price)</option>
             </select>

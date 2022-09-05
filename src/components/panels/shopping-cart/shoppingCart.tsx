@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Modal } from "../../modal/modal";
 import lottie from "lottie-web";
 import Vegas from "../../../images/pizza/vegan.png";
+import Spicy from "../../../images/pizza/spicy.png";
 import { v4 as uuidv4 } from "uuid";
 import { shopToogle } from "../../../reducer/toogleReducer/toogleReducer";
 import {
@@ -29,6 +30,7 @@ export const ShoppingCart: React.FC = () => {
     count: 0,
     description: "",
     veg: false,
+    spicy: false,
     additions: [
       {
         cheese_board: [
@@ -60,7 +62,8 @@ export const ShoppingCart: React.FC = () => {
   const meat = useRef<HTMLInputElement>(null);
   const cheese_mix = useRef<HTMLInputElement>(null);
 
-  const { id, price, img, name, description, additions, veg } = productData;
+  const { id, price, img, name, description, additions, veg, spicy } =
+    productData;
 
   const clearCheckBox = () => {
     if (null !== cheese_board.current) {
@@ -142,13 +145,24 @@ export const ShoppingCart: React.FC = () => {
                 className="fas fa-edit"
                 name="update_qty"
               ></button>
-              {item.veg ? (
-                <div className="vegan">
-                  <span>
-                    <img className="vegan-img" src={Vegas} alt="" />
-                  </span>
-                </div>
-              ) : null}
+
+              <div className="shopping_designations">
+                {item.veg ? (
+                  <div className="vegan">
+                    <span>
+                      <img className="vegan-img" src={Vegas} alt="" />
+                    </span>
+                  </div>
+                ) : null}
+                {item.spicy ? (
+                  <div className="spicy">
+                    <span>
+                      <img className="spicy-img" src={Spicy} alt="" />
+                    </span>
+                  </div>
+                ) : null}
+              </div>
+
               <img src={item.img} alt="" />
               <div className="content">
                 <span>
@@ -187,15 +201,26 @@ export const ShoppingCart: React.FC = () => {
         <div className="modal_container">
           <div className="modal_image_block">
             <div className="price">
-              $<span>{price}</span>
+              <span>${price}</span>
             </div>
-            {veg ? (
-              <div className="vegan">
-                <span>
-                  <img className="vegan-img" src={Vegas} alt="" />
-                </span>
-              </div>
-            ) : null}
+
+            <div className="shopping_designations">
+              {veg ? (
+                <div className="vegan">
+                  <span>
+                    <img className="vegan-img" src={Vegas} alt="" />
+                  </span>
+                </div>
+              ) : null}
+              {spicy ? (
+                <div className="spicy">
+                  <span>
+                    <img className="spicy-img" src={Spicy} alt="" />
+                  </span>
+                </div>
+              ) : null}
+            </div>
+
             <img src={img} alt="" />
             <input
               type="number"
@@ -281,7 +306,14 @@ export const ShoppingCart: React.FC = () => {
             <button
               className="btn"
               onClick={() => {
-                dispatch(changeItem({productItem, meat: true, cheese_mix: true, cheese_board: true }));
+                dispatch(
+                  changeItem({
+                    productItem,
+                    meat: true,
+                    cheese_mix: true,
+                    cheese_board: true,
+                  })
+                );
                 clearCheckBox();
                 setActive(false);
               }}

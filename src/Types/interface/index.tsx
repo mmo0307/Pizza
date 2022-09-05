@@ -11,6 +11,7 @@ export interface ProductCartList {
   totalCost?: number;
   description: string;
   veg: boolean;
+  spicy: boolean;
   additions: [
     {
       cheese_board: [

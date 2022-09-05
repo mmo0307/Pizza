@@ -417,14 +417,25 @@ section {
 } */
 
 .shopping-cart .box .vegan {
-  position: absolute;
-  top: 1rem;
-  right: 26rem;
   background-color: #b8e9c0;
   border-radius: 0.5rem;
 }
 
-.shopping-cart .box .vegan .vegan-img {
+.shopping_designations {
+  display: flex;
+  flex-direction: column;
+}
+
+.shopping_designations .vegan {
+  margin-bottom: 5px;
+}
+
+.shopping-cart .box .shopping_designations .vegan .vegan-img {
+  width: 30px !important;
+  margin-bottom: 0;
+}
+
+.shopping-cart .box .shopping_designations .spicy .spicy-img {
   width: 30px !important;
   margin-bottom: 0;
 }
@@ -582,7 +593,7 @@ section {
   margin-bottom: 1rem;
 }
 
-.menu .box-container .box .price {
+.menu .box-container .box .price_box .price {
   background-color: var(--black);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
@@ -593,15 +604,30 @@ section {
   left: 1rem;
 }
 
-.box .vegan {
+.menu .box-container .box .price_box .designations {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 1rem;
   right: 1rem;
+}
+
+.box .vegan {
   background-color: #b8e9c0;
   border-radius: 0.5rem;
 }
 
 .vegan-img {
+  width: 50px !important;
+  margin-bottom: 0 !important;
+}
+
+.box .spicy {
+  background-color: #333333;
+  border-radius: 0.5rem;
+}
+
+.spicy-img {
   width: 50px !important;
   margin-bottom: 0 !important;
 }
@@ -703,6 +729,14 @@ section {
   flex-wrap: wrap;
 }
 
+.modal_container .shopping_designations {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5rem;
+  left: 30rem;
+}
+
 .modal_container .bottom_button {
   display: flex;
   align-items: flex-end;
@@ -768,9 +802,6 @@ section {
 }
 
 .modal_container .modal_image_block .vegan {
-  position: absolute;
-  top: 5rem;
-  left: 30rem;
   background-color: #b8e9c0;
   border-radius: 0.5rem;
 }
@@ -778,7 +809,17 @@ section {
 .modal_container .modal_image_block .vegan .vegan-img {
   width: 50px;
   height: 50px;
-  margin-bottom: 0;
+  margin-bottom: 5px;
+}
+
+.modal_container .modal_image_block .shopping_designations .spicy {
+  background-color: #333333;
+  border-radius: 0.5rem;
+}
+
+.modal_container .modal_image_block .shopping_designations .spicy .spicy-img {
+  width: 50px;
+  height: 50px;
 }
 
 .modal_container .modal_image_block img {

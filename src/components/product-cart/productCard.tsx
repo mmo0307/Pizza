@@ -32,21 +32,21 @@ export const ProductCard: React.FC<{ data: ProductCartList }> = ({ data }) => {
       <div className="price_box">
         <span className="price">${price}</span>
         <div className="designations">
-        {veg ? (
-          <div className="vegan">
-            <span>
-              <img className="vegan-img" src={Vegas} alt="" />
-            </span>
-          </div>
-        ) : null}
-        {spicy ? (
-          <div className="spicy">
-            <span>
-              <img className="spicy-img" src={Spicy} alt="" />
-            </span>
-          </div>
-        ) : null}
-      </div>
+          {veg ? (
+            <div className="vegan">
+              <span>
+                <img className="vegan-img" src={Vegas} alt="" />
+              </span>
+            </div>
+          ) : null}
+          {spicy ? (
+            <div className="spicy">
+              <span>
+                <img className="spicy-img" src={Spicy} alt="" />
+              </span>
+            </div>
+          ) : null}
+        </div>
       </div>
 
       <img className="pizza-img" src={img} alt="" />

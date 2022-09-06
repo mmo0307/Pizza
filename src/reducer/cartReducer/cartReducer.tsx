@@ -33,7 +33,7 @@ const cartReducer = createSlice({
       });
       state.total = total;
 
-      console.log(current(state))
+      //console.log(current(state));
     },
     deleteItem: (state, action: ActionType) => {
       state.productCartList = state.productCartList.filter(
@@ -46,9 +46,9 @@ const cartReducer = createSlice({
       state.total = total;
     },
     changeItem: (state, action: ActionType) => {
-      console.log(current(state));
-      console.log(action.payload);
-      const { productItem, meat, cheese_mix, cheese_board } = action.payload;
+      //console.log(current(state));
+      //console.log(action.payload);
+      const { productItem, meat, cheese_mix, cheese_board, count } = action.payload;
 
       for (let i = 0; i < state.productCartList.length; i++) {
         if (current(state.productCartList[i]).id === productItem.id) {
@@ -57,18 +57,17 @@ const cartReducer = createSlice({
             cheese_mix;
           state.productCartList[i].additions[0].cheese_board[0].selected =
             cheese_board;
+            state.productCartList[i].count = Number(count);
+            state.productCartList[i].totalCost = state.productCartList[i].price * Number(count);
         }
       }
-
-      console.log("----------");
-      console.log(action.payload);
-      console.log(current(state));
 
       let total = 0;
       state.productCartList.forEach((item) => {
         total += item.totalCost ?? 0;
       });
       state.total = total;
+      console.log(current(state));
     },
   },
 });

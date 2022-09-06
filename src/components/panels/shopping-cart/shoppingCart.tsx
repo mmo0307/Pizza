@@ -58,12 +58,19 @@ export const ShoppingCart: React.FC = () => {
     ],
   });
 
+  const { id, price, img, name, description, additions, veg, spicy } =
+    productData;
+
   const cheese_board = useRef<HTMLInputElement>(null);
   const meat = useRef<HTMLInputElement>(null);
   const cheese_mix = useRef<HTMLInputElement>(null);
 
-  const { id, price, img, name, description, additions, veg, spicy } =
-    productData;
+  if(cheese_board.current !== null && meat.current !== null && cheese_mix.current !== null) {
+    cheese_board.current.checked = additions[0].cheese_board[0].selected;
+    meat.current.checked = additions[0].meat[0].selected;
+    cheese_mix.current.checked = additions[0].cheese_mix[0].selected;
+  }
+
 
   const clearCheckBox = () => {
     if (null !== cheese_board.current) {
@@ -244,15 +251,12 @@ export const ShoppingCart: React.FC = () => {
               <div className="addition_content">
                 <input
                   ref={cheese_board}
-                  //checked={true}
                   className="choice_addition"
                   type="checkbox"
                   name="cheese_board"
                   value="cheese_board"
-                  // onClick={() => {
-                  //   additions[0].cheese_board[0].selected =
-                  //     !additions[0].cheese_board[0].selected;
-                  // }}
+                  //checked={additions[0].cheese_board[0].selected}
+                  //onChange={(e) => console.log(e.target.checked)}
                 />
                 <p className="addition_title">
                   {additions[0].cheese_board[0].title}
@@ -269,11 +273,8 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="meat"
                   value="meat"
-                  //checked={true}
-                  // onClick={() =>
-                  //   (additions[0].meat[0].selected =
-                  //     !additions[0].meat[0].selected)
-                  // }
+                  //onChange={(e) => console.log(e.target.checked)}
+                  //checked={additions[0].meat[0].selected}
                 />
                 <p className="addition_title">{additions[0].meat[0].title}</p>
                 <p className="addition_price">+{additions[0].meat[0].price}$</p>
@@ -286,11 +287,8 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="cheese_mix"
                   value="cheese_mix"
-                  //checked={true}
-                  // onClick={() =>
-                  //   (additions[0].cheese_mix[0].selected =
-                  //     !additions[0].cheese_mix[0].selected)
-                  // }
+                  //checked={additions[0].cheese_mix[0].selected}
+                  //onChange={(e) => console.log(e.target.checked)}
                 />
                 <p className="addition_title">
                   {additions[0].cheese_mix[0].title}
@@ -309,9 +307,10 @@ export const ShoppingCart: React.FC = () => {
                 dispatch(
                   changeItem({
                     productItem,
-                    meat: true,
-                    cheese_mix: true,
-                    cheese_board: true,
+                    count,
+                    meat: meat.current?.checked,
+                    cheese_mix: cheese_mix.current?.checked,
+                    cheese_board: cheese_board.current?.checked,
                   })
                 );
                 clearCheckBox();

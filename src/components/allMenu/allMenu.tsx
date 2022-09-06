@@ -43,7 +43,7 @@ export const AllMenu = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     lottie.loadAnimation({

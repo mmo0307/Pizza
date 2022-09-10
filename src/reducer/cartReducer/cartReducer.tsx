@@ -2,9 +2,11 @@ import { createSlice, current } from "@reduxjs/toolkit";
 import { ActionType, StoreState } from "../../Types/interface";
 
 const initialState = {
-  productCartList: [],
-  total: 0,
-} as StoreState;
+  ...(JSON.parse(
+    localStorage.getItem("product") ||
+      JSON.stringify({ productCartList: [], total: 0 })
+  ) as StoreState),
+};
 
 const cartReducer = createSlice({
   name: "cart",
@@ -33,7 +35,7 @@ const cartReducer = createSlice({
       });
       state.total = total;
 
-      //console.log(current(state));
+      localStorage.setItem("product", JSON.stringify(state));
     },
     deleteItem: (state, action: ActionType) => {
       state.productCartList = state.productCartList.filter(
@@ -44,30 +46,43 @@ const cartReducer = createSlice({
         total += item.totalCost ?? 0;
       });
       state.total = total;
+
+      localStorage.setItem("product", JSON.stringify(state));
     },
     changeItem: (state, action: ActionType) => {
-      //console.log(current(state));
-      //console.log(action.payload);
-      const { productItem, meat, cheese_mix, cheese_board, count } = action.payload;
+      const { productItem, meat, cheese_mix, cheese_board, count } =
+        action.payload;
 
-      for (let i = 0; i < state.productCartList.length; i++) {
-        if (current(state.productCartList[i]).id === productItem.id) {
-          state.productCartList[i].additions[0].meat[0].selected = meat;
-          state.productCartList[i].additions[0].cheese_mix[0].selected =
-            cheese_mix;
-          state.productCartList[i].additions[0].cheese_board[0].selected =
-            cheese_board;
-            state.productCartList[i].count = Number(count);
-            state.productCartList[i].totalCost = state.productCartList[i].price * Number(count);
+      console.log();
+
+      state.productCartList.forEach((item, index) => {
+        if (current(item).id === productItem.id) {
+          item.additions[index].meat[0].selected = meat;
+          item.additions[index].cheese_mix[0].selected = cheese_mix;
+          item.additions[index].cheese_board[0].selected = cheese_board;
+          item.count = Number(count);
+          item.totalCost = item.price * Number(count);
+
+          if (meat) {
+            item.totalCost += item.additions[index].meat[0].price;
+          }
+
+          if (cheese_mix) {
+            item.totalCost += item.additions[index].cheese_mix[0].price;
+          }
+
+          if (cheese_board) {
+            item.totalCost += item.additions[index].cheese_board[0].price;
+          }
         }
-      }
+      });
 
       let total = 0;
       state.productCartList.forEach((item) => {
         total += item.totalCost ?? 0;
       });
       state.total = total;
-      console.log(current(state));
+      localStorage.setItem("product", JSON.stringify(state));
     },
   },
 });

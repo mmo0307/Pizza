@@ -65,12 +65,15 @@ export const ShoppingCart: React.FC = () => {
   const meat = useRef<HTMLInputElement>(null);
   const cheese_mix = useRef<HTMLInputElement>(null);
 
-  if(cheese_board.current !== null && meat.current !== null && cheese_mix.current !== null) {
+  if (
+    cheese_board.current !== null &&
+    meat.current !== null &&
+    cheese_mix.current !== null
+  ) {
     cheese_board.current.checked = additions[0].cheese_board[0].selected;
     meat.current.checked = additions[0].meat[0].selected;
     cheese_mix.current.checked = additions[0].cheese_mix[0].selected;
   }
-
 
   const clearCheckBox = () => {
     if (null !== cheese_board.current) {

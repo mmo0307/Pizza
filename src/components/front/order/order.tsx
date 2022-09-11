@@ -1,12 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { deleteItem } from "../../../redux/reducer/cartReducer/cartReducer";
 import { productCartList } from "../../../redux/selector/cartSelector";
 import { AppDispatch } from "../../../Types/type";
+import { v4 as uuidv4 } from "uuid";
 
 export const Order = () => {
   const dispatch = useDispatch<AppDispatch>();
   const cartData = useSelector(productCartList);
+  const navigate = useNavigate();
+
+  const checkLength = () => {
+    if (cartData.productCartList.length === 1) {
+      navigate("/");
+    }
+  };
+
   return (
     <>
       <section className="order" id="order">
@@ -17,7 +27,7 @@ export const Order = () => {
             <div className="display-orders">
               {cartData.productCartList.map((item) => {
                 return (
-                  <div>
+                  <div key={uuidv4()}>
                     <img src={item.img} alt="" />
                     <p>{item.name}</p>
                     <span>
@@ -25,7 +35,10 @@ export const Order = () => {
                     </span>
                     <p
                       className="fas fa-times"
-                      onClick={() => dispatch(deleteItem(item.id))}
+                      onClick={() => {
+                        checkLength();
+                        dispatch(deleteItem(item.id));
+                      }}
                     ></p>
                   </div>
                 );

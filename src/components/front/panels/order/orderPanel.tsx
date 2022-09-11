@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ordersToogle } from "../../../redux/reducer/toogleReducer/toogleReducer";
-import { toogleOrders } from "../../../redux/selector/toogleSelector";
-import { AppDispatch } from "../../../Types/type";
+import { ordersToogle } from "../../../../redux/reducer/toogleReducer/toogleReducer";
+import { toogleOrders } from "../../../../redux/selector/toogleSelector";
+import { AppDispatch } from "../../../../Types/type";
 
 export const OrderPanel = () => {
   const flag = useSelector(toogleOrders);

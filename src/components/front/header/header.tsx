@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { accountToogle, menuToogle, ordersToogle, shopToogle } from "../../redux/reducer/toogleReducer/toogleReducer";
-import { productCartList } from "../../redux/selector/cartSelector";
-import { toogleMenu } from "../../redux/selector/toogleSelector";
-import { ProductCartList } from "../../Types/interface";
-import { AppDispatch } from "../../Types/type";
+import { accountToogle, menuToogle, ordersToogle, shopToogle } from "../../../redux/reducer/toogleReducer/toogleReducer";
+import { productCartList } from "../../../redux/selector/cartSelector";
+import { toogleMenu } from "../../../redux/selector/toogleSelector";
+import { ProductCartList } from "../../../Types/interface";
+import { AppDispatch } from "../../../Types/type";
 import { Account } from "../panels/account/account";
 import { OrderPanel } from "../panels/order/orderPanel";
 import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";

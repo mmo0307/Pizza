@@ -3,12 +3,12 @@ import { ProductCard } from "../product-cart/productCard";
 import axios from "axios";
 import lottie from "lottie-web";
 import { v4 as uuidv4 } from "uuid";
-import { ProductCartList } from "../../Types/interface";
 import { useDispatch, useSelector } from "react-redux";
-import { PIZZA_API } from "../../constants";
-import { addProduct, sortProduct } from "../../redux/reducer/productReducer/productReducer";
-import { productList } from "../../redux/selector/productSelector";
-import { AppDispatch } from "../../Types/type";
+import { AppDispatch } from "../../../Types/type";
+import { productList } from "../../../redux/selector/productSelector";
+import { PIZZA_API } from "../../../constants";
+import { addProduct, sortProduct } from "../../../redux/reducer/productReducer/productReducer";
+import { ProductCartList } from "../../../Types/interface";
 
 export const AllMenu = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -50,7 +50,7 @@ export const AllMenu = () => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../../constants/pizza-loader.json"),
+      animationData: require("../../../constants/pizza-loader.json"),
     });
   }, [product.length]);
 

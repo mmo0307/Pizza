@@ -1,20 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Modal } from "../../modal/modal";
 import lottie from "lottie-web";
-import Vegas from "../../../images/pizza/vegan.png";
-import Spicy from "../../../images/pizza/spicy.png";
 import { v4 as uuidv4 } from "uuid";
-import { shopToogle } from "../../../redux/reducer/toogleReducer/toogleReducer";
-import {
-  changeItem,
-  deleteItem,
-} from "../../../redux/reducer/cartReducer/cartReducer";
-import { ProductCartList } from "../../../Types/interface";
-import { toogleShop } from "../../../redux/selector/toogleSelector";
-import { productCartList } from "../../../redux/selector/cartSelector";
-import { AppDispatch } from "../../../Types/type";
+import { AppDispatch } from "../../../../Types/type";
+import { toogleShop } from "../../../../redux/selector/toogleSelector";
+import { productCartList } from "../../../../redux/selector/cartSelector";
+import { ProductCartList } from "../../../../Types/interface";
+import { shopToogle } from "../../../../redux/reducer/toogleReducer/toogleReducer";
+import { changeItem, deleteItem } from "../../../../redux/reducer/cartReducer/cartReducer";
+import { Modal } from "../../../modal/modal";
+import Vegas from '../../../../images/pizza/vegan.png'
+import Spicy from '../../../../images/pizza/spicy.png'
 
 export const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -120,7 +117,7 @@ export const ShoppingCart: React.FC = () => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../../../constants/shop_cart.json"),
+      animationData: require("../../../../constants/shop_cart.json"),
     });
   }, [item.productCartList.length]);
 

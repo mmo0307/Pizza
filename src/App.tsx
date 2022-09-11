@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Main } from "./components/main/Main";
-import { AllMenu } from "./components/allMenu/allMenu";
-import { Header } from "./components/header/header";
-import { Order } from "./components/order/order";
+import { Main } from "./components/front/main/Main";
+import { AllMenu } from "./components/front/allMenu/allMenu";
+import { Header } from "./components/front/header/header";
+import { Order } from "./components/front/order/order";
 import { FailPage } from "./components/404/404";
+
+import { Admin } from "./components/admin";
 
 const App = () => {
   return (
@@ -17,7 +19,9 @@ const App = () => {
           <Route path="/orders" element={<Order />} />
           <Route path="/" element={<Main />} />
 
-          <Route path="*" element={<FailPage />}/>
+          {/* <Route path="/admin" element={<Admin />} /> */}
+
+          <Route path="*" element={<FailPage />} />
         </Routes>
       </Router>
     </>

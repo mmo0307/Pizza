@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { accountToogle } from '../../../redux/reducer/toogleReducer/toogleReducer';
-import { toogleAccount } from '../../../redux/selector/toogleSelector';
-import { AppDispatch } from '../../../Types/type';
+import { accountToogle } from '../../../../redux/reducer/toogleReducer/toogleReducer';
+import { toogleAccount } from '../../../../redux/selector/toogleSelector';
+import { AppDispatch } from '../../../../Types/type';
 
 export const Account = () => {
   const flag = useSelector(toogleAccount);

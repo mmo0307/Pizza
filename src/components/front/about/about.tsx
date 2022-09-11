@@ -1,8 +1,8 @@
 import React from 'react'
 
-import About1 from "../../images/about/about-1.svg";
-import About2 from "../../images/about/about-2.svg";
-import About3 from "../../images/about/about-3.svg";
+import About1 from "../../../images/about/about-1.svg";
+import About2 from "../../../images/about/about-2.svg";
+import About3 from "../../../images/about/about-3.svg";
 
 export const About = () => {
   return (

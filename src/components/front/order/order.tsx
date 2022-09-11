@@ -1,6 +1,12 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteItem } from "../../../redux/reducer/cartReducer/cartReducer";
+import { productCartList } from "../../../redux/selector/cartSelector";
+import { AppDispatch } from "../../../Types/type";
 
 export const Order = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const cartData = useSelector(productCartList);
   return (
     <>
       <section className="order" id="order">
@@ -9,39 +15,21 @@ export const Order = () => {
         <div className="form_order">
           <div>
             <div className="display-orders">
-              <p>
-                pizza-1 <span>( $3/- x 2 )</span>
-              </p>
-              <p>
-                pizza-3 <span>( $2/- x 1 )</span>
-              </p>
-              <p>
-                pizza-6 <span>( $4/- x 4 )</span>
-              </p>
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
-              <p>
-                pizza-7 <span>( $2/- x 1 )</span>
-              </p>
+              {cartData.productCartList.map((item) => {
+                return (
+                  <div>
+                    <img src={item.img} alt="" />
+                    <p>{item.name}</p>
+                    <span>
+                      ( ${item.price} - x {item.count} )
+                    </span>
+                    <p
+                      className="fas fa-times"
+                      onClick={() => dispatch(deleteItem(item.id))}
+                    ></p>
+                  </div>
+                );
+              })}
             </div>
 
             <div>
@@ -90,7 +78,7 @@ export const Order = () => {
 
               <input
                 type="submit"
-                value="order now"
+                value={`order now (${cartData.total}$)`}
                 className="btn"
                 name="order"
               />

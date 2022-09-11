@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import Home1 from "../../images/home/home-img-1.png";
-import Home2 from "../../images/home/home-img-2.png";
-import Home3 from "../../images/home/home-img-3.png";
+import Home1 from "../../../images/home/home-img-1.png";
+import Home2 from "../../../images/home/home-img-2.png";
+import Home3 from "../../../images/home/home-img-3.png";
 
 export const HomeBanner = () => {
   const [indx, setIndx] = useState<number>(0);

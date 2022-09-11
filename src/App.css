@@ -683,7 +683,9 @@ section {
   border-radius: 0.5rem;
 }
 
-.order div .display-orders p {
+.order div .display-orders div {
+  display: flex;
+  align-items: center;
   font-size: 2rem;
   color: var(--light-color);
   background-color: var(--white);
@@ -692,8 +694,21 @@ section {
   box-shadow: var(--box-shadow);
 }
 
-.order div .display-orders p span {
+.order div .display-orders div img {
+  width: 50px;
+  height: 50px;
+}
+
+.order div .display-orders div p {
+  padding-left: 20px;
+}
+
+.order div .display-orders div span {
   color: var(--red);
+}
+
+.display-orders .fas.fa-times {
+  cursor: pointer;
 }
 
 .order div .flex {

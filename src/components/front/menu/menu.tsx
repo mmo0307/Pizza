@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ProductCard } from "../product-cart/productCard";
 import lottie from "lottie-web";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
-import { ProductCartList } from "../../Types/interface";
+import { ProductCartList } from "../../../Types/interface";
+import { ProductCard } from "../product-cart/productCard";
 
 export const Menu = () => {
   const [loader, setloader] = useState<boolean>(true);
@@ -17,7 +17,7 @@ export const Menu = () => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../../constants/pizza-loader.json"),
+      animationData: require("../../../constants/pizza-loader.json"),
     });
   }, [data_product.length]);
 

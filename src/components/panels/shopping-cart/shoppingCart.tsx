@@ -261,8 +261,6 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="cheese_board"
                   value="cheese_board"
-                  //checked={additions[0].cheese_board[0].selected}
-                  //onChange={(e) => console.log(e.target.checked)}
                 />
                 <p className="addition_title">
                   {additions[0].cheese_board[0].title}
@@ -279,8 +277,6 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="meat"
                   value="meat"
-                  //onChange={(e) => console.log(e.target.checked)}
-                  //checked={additions[0].meat[0].selected}
                 />
                 <p className="addition_title">{additions[0].meat[0].title}</p>
                 <p className="addition_price">+{additions[0].meat[0].price}$</p>
@@ -293,8 +289,6 @@ export const ShoppingCart: React.FC = () => {
                   type="checkbox"
                   name="cheese_mix"
                   value="cheese_mix"
-                  //checked={additions[0].cheese_mix[0].selected}
-                  //onChange={(e) => console.log(e.target.checked)}
                 />
                 <p className="addition_title">
                   {additions[0].cheese_mix[0].title}

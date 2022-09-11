@@ -53,26 +53,25 @@ const cartReducer = createSlice({
       const { productItem, meat, cheese_mix, cheese_board, count } =
         action.payload;
 
-      console.log();
-
       state.productCartList.forEach((item, index) => {
         if (current(item).id === productItem.id) {
-          item.additions[index].meat[0].selected = meat;
-          item.additions[index].cheese_mix[0].selected = cheese_mix;
-          item.additions[index].cheese_board[0].selected = cheese_board;
+          item.additions[0].meat[0].selected = meat;
+          item.additions[0].cheese_mix[0].selected = cheese_mix;
+          item.additions[0].cheese_board[0].selected = cheese_board;
+
           item.count = Number(count);
           item.totalCost = item.price * Number(count);
 
           if (meat) {
-            item.totalCost += item.additions[index].meat[0].price;
+            item.totalCost += item.additions[0].meat[0].price;
           }
 
           if (cheese_mix) {
-            item.totalCost += item.additions[index].cheese_mix[0].price;
+            item.totalCost += item.additions[0].cheese_mix[0].price;
           }
 
           if (cheese_board) {
-            item.totalCost += item.additions[index].cheese_board[0].price;
+            item.totalCost += item.additions[0].cheese_board[0].price;
           }
         }
       });

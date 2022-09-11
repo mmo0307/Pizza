@@ -1,10 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ordersToogle } from "../../../reducer/toogleReducer/toogleReducer";
+import { ordersToogle } from "../../../redux/reducer/toogleReducer/toogleReducer";
+import { toogleOrders } from "../../../redux/selector/toogleSelector";
+import { AppDispatch } from "../../../Types/type";
 
 export const OrderPanel = () => {
-  const flag = useSelector((state: any) => state.toogle.orders);
-  const dispatch = useDispatch();
+  const flag = useSelector(toogleOrders);
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <div className={`my-orders ${flag ? "active" : ""}`}>
       <section>

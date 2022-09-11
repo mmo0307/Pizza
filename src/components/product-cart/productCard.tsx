@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Vegas from "../../images/pizza/vegan.png";
 import Spicy from "../../images/pizza/spicy.png";
-import { addToCart } from "../../reducer/cartReducer/cartReducer";
 import { ProductCartList } from "../../Types/interface";
+import { addToCart } from "../../redux/reducer/cartReducer/cartReducer";
+import { AppDispatch } from "../../Types/type";
 
 export const ProductCard: React.FC<{ data: ProductCartList }> = ({ data }) => {
   const { id, price, img, name, veg, spicy, description, additions } = data;
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [count, setCount] = useState<number>(1);
 
   const changeCount = (e: any) => {

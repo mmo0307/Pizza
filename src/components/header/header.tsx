@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { accountToogle, menuToogle, ordersToogle, shopToogle } from "../../reducer/toogleReducer/toogleReducer";
+import { accountToogle, menuToogle, ordersToogle, shopToogle } from "../../redux/reducer/toogleReducer/toogleReducer";
+import { productCartList } from "../../redux/selector/cartSelector";
+import { toogleMenu } from "../../redux/selector/toogleSelector";
 import { ProductCartList } from "../../Types/interface";
+import { AppDispatch } from "../../Types/type";
 import { Account } from "../panels/account/account";
 import { OrderPanel } from "../panels/order/orderPanel";
 import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";
 
 export const Header = () => {
-  const dispatch = useDispatch();
-  const flag = useSelector((state: any) => state.toogle.menu);
-  const item = useSelector((state: any) => state.cart);
+  const dispatch = useDispatch<AppDispatch>();
+  const flag = useSelector(toogleMenu);
+  const item = useSelector(productCartList);
   const [data, setData] = useState<ProductCartList[]>([]);
 
   useEffect(() => {

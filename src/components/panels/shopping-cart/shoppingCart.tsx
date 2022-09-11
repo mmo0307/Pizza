@@ -6,18 +6,21 @@ import lottie from "lottie-web";
 import Vegas from "../../../images/pizza/vegan.png";
 import Spicy from "../../../images/pizza/spicy.png";
 import { v4 as uuidv4 } from "uuid";
-import { shopToogle } from "../../../reducer/toogleReducer/toogleReducer";
+import { shopToogle } from "../../../redux/reducer/toogleReducer/toogleReducer";
 import {
   changeItem,
   deleteItem,
-} from "../../../reducer/cartReducer/cartReducer";
+} from "../../../redux/reducer/cartReducer/cartReducer";
 import { ProductCartList } from "../../../Types/interface";
+import { toogleShop } from "../../../redux/selector/toogleSelector";
+import { productCartList } from "../../../redux/selector/cartSelector";
+import { AppDispatch } from "../../../Types/type";
 
 export const ShoppingCart: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const container = useRef<any>(null);
-  const flag = useSelector((state: any) => state.toogle.shop);
-  const item = useSelector((state: any) => state.cart);
+  const flag = useSelector(toogleShop);
+  const item = useSelector(productCartList);
   const [data, setData] = useState<ProductCartList[]>(item.productCartList);
   const [active, setActive] = useState<boolean>(false);
   const [productId, setProductId] = useState<number>(0);

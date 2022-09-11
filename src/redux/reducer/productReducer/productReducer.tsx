@@ -1,5 +1,5 @@
-import { createSlice, current } from "@reduxjs/toolkit";
-import { ActionType, Product } from "../../Types/interface";
+import { createSlice } from "@reduxjs/toolkit";
+import { ActionType, Product } from "../../../Types/interface";
 
 const initialState = {
   productList: [],

@@ -1,5 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { ActionType, StoreState } from "../../Types/interface";
+import { ActionType, StoreState } from "../../../Types/interface";
 
 const initialState = {
   ...(JSON.parse(

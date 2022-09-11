@@ -1,10 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { accountToogle } from '../../../reducer/toogleReducer/toogleReducer';
+import { accountToogle } from '../../../redux/reducer/toogleReducer/toogleReducer';
+import { toogleAccount } from '../../../redux/selector/toogleSelector';
+import { AppDispatch } from '../../../Types/type';
 
 export const Account = () => {
-  const flag = useSelector((state: any) => state.toogle.account);
-  const dispatch =  useDispatch();
+  const flag = useSelector(toogleAccount);
+  const dispatch =  useDispatch<AppDispatch>();
   return (
     <div className={`user-account ${flag ? 'active': ''}`}>
     <section>

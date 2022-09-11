@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ToogleState } from "../../Types/interface";
+import { ToogleState } from "../../../Types/interface";
 
 const initialState = {
   account: false,

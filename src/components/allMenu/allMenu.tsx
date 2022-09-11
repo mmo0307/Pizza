@@ -6,14 +6,13 @@ import { v4 as uuidv4 } from "uuid";
 import { ProductCartList } from "../../Types/interface";
 import { useDispatch, useSelector } from "react-redux";
 import { PIZZA_API } from "../../constants";
-import {
-  addProduct,
-  sortProduct,
-} from "../../reducer/productReducer/productReducer";
+import { addProduct, sortProduct } from "../../redux/reducer/productReducer/productReducer";
+import { productList } from "../../redux/selector/productSelector";
+import { AppDispatch } from "../../Types/type";
 
 export const AllMenu = () => {
-  const dispatch = useDispatch();
-  const product = useSelector((state: any) => state.product.productList);
+  const dispatch = useDispatch<AppDispatch>();
+  const product = useSelector(productList);
   const [loader, setloader] = useState<boolean>(true);
   const container = useRef<any>(null);
 

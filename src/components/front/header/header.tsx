@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import { accountToogle, menuToogle, ordersToogle, shopToogle } from "../../../redux/reducer/toogleReducer/toogleReducer";
 import { productCartList } from "../../../redux/selector/cartSelector";
 import { toogleMenu } from "../../../redux/selector/toogleSelector";
@@ -11,10 +11,13 @@ import { OrderPanel } from "../panels/order/orderPanel";
 import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";
 
 export const Header = () => {
+  let location = useLocation();
   const dispatch = useDispatch<AppDispatch>();
   const flag = useSelector(toogleMenu);
   const item = useSelector(productCartList);
   const [data, setData] = useState<ProductCartList[]>([]);
+
+  const header_class = location.pathname === '/admin' ? 'header-none' : 'header'
 
   useEffect(() => {
     setData(item.productCartList);
@@ -22,7 +25,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className="header">
+      <header className={header_class}>
         <section className="flex">
           <Link to="/" className="logo">
             Pizza.

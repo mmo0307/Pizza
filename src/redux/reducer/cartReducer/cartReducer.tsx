@@ -63,15 +63,15 @@ const cartReducer = createSlice({
           item.totalCost = item.price * Number(count);
 
           if (meat) {
-            item.totalCost += item.additions[0].meat[0].price;
+            item.totalCost += item.additions[0].meat[0].price * Number(count);
           }
 
           if (cheese_mix) {
-            item.totalCost += item.additions[0].cheese_mix[0].price;
+            item.totalCost += item.additions[0].cheese_mix[0].price * Number(count);
           }
 
           if (cheese_board) {
-            item.totalCost += item.additions[0].cheese_board[0].price;
+            item.totalCost += item.additions[0].cheese_board[0].price * Number(count);
           }
         }
       });

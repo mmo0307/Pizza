@@ -92,6 +92,10 @@ section {
   background-color: var(--black);
 }
 
+.header-none {
+  display: none;
+}
+
 .header {
   position: fixed;
   top: 0;

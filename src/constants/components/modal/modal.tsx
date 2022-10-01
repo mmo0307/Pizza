@@ -21,11 +21,10 @@ export const Modal = ({ active, setActive, children }: Props) => {
             <p className="modal_content_title">Our orders</p>
           </div>
           <div>
-            <a
-              href="#"
+            <span
               className="fas fa-times"
               onClick={() => setActive(false)}
-            ></a>
+            />
           </div>
         </div>
         {children}

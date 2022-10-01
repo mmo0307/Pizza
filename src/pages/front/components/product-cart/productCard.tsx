@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Vegas from "../../../images/pizza/vegan.png";
-import Spicy from "../../../images/pizza/spicy.png";
-import { ProductCartList } from "../../../Types/interface";
-import { addToCart } from "../../../redux/reducer/cartReducer/cartReducer";
-import { AppDispatch } from "../../../Types/type";
+import Vegas from "../../../../images/pizza/vegan.png";
+import Spicy from "../../../../images/pizza/spicy.png";
+import { ProductCartList } from "../../../../Types/interface";
+import { addToCart } from "../../../../redux/reducer/cartReducer/cartReducer";
+import { AppDispatch } from "../../../../Types/type";
 
 export const ProductCard: React.FC<{ data: ProductCartList }> = ({ data }) => {
   const { id, price, img, name, veg, spicy, description, additions } = data;

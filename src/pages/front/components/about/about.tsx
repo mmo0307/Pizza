@@ -1,8 +1,8 @@
 import React from 'react'
 
-import About1 from "../../../images/about/about-1.svg";
-import About2 from "../../../images/about/about-2.svg";
-import About3 from "../../../images/about/about-3.svg";
+import About1 from "../../../../images/about/about-1.svg";
+import About2 from "../../../../images/about/about-2.svg";
+import About3 from "../../../../images/about/about-3.svg";
 
 export const About = () => {
   return (
@@ -18,7 +18,7 @@ export const About = () => {
           quae amet beatae magni numquam facere sit. Tempora vel laboriosam
           repudiandae!
         </p>
-        <a href="#menu" className="btn">
+        <a href="src/pages/front/components/about/about#menu" className="btn">
           our menu
         </a>
       </div>
@@ -31,7 +31,7 @@ export const About = () => {
           quae amet beatae magni numquam facere sit. Tempora vel laboriosam
           repudiandae!
         </p>
-        <a href="#menu" className="btn">
+        <a href="src/pages/front/components/about/about#menu" className="btn">
           our menu
         </a>
       </div>
@@ -44,7 +44,7 @@ export const About = () => {
           quae amet beatae magni numquam facere sit. Tempora vel laboriosam
           repudiandae!
         </p>
-        <a href="#menu" className="btn">
+        <a href="src/pages/front/components/about/about#menu" className="btn">
           our menu
         </a>
       </div>

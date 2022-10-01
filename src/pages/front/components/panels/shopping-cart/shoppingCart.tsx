@@ -3,20 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import lottie from "lottie-web";
 import { v4 as uuidv4 } from "uuid";
-import { AppDispatch } from "../../../../Types/type";
-import { toogleShop } from "../../../../redux/selector/toogleSelector";
-import { productCartList } from "../../../../redux/selector/cartSelector";
-import { ProductCartList } from "../../../../Types/interface";
-import { shopToogle } from "../../../../redux/reducer/toogleReducer/toogleReducer";
-import { changeItem, deleteItem } from "../../../../redux/reducer/cartReducer/cartReducer";
-import { Modal } from "../../../modal/modal";
-import Vegas from '../../../../images/pizza/vegan.png'
-import Spicy from '../../../../images/pizza/spicy.png'
+import { AppDispatch } from "../../../../../Types/type";
+import { toggleShop } from "../../../../../redux/selector/toggleSelector";
+import { productCartList } from "../../../../../redux/selector/cartSelector";
+import { ProductCartList } from "../../../../../Types/interface";
+import { shopToggle} from "../../../../../redux/reducer/toggleReducer/toggleReducer";
+import { changeItem, deleteItem } from "../../../../../redux/reducer/cartReducer/cartReducer";
+import { Modal } from "../../../../../constants/components/modal/modal";
+import Vegas from '../../../../../images/pizza/vegan.png'
+import Spicy from '../../../../../images/pizza/spicy.png'
 
 export const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const container = useRef<any>(null);
-  const flag = useSelector(toogleShop);
+  const flag = useSelector(toggleShop);
   const item = useSelector(productCartList);
   const [data, setData] = useState<ProductCartList[]>(item.productCartList);
   const [active, setActive] = useState<boolean>(false);
@@ -77,19 +77,19 @@ export const ShoppingCart: React.FC = () => {
 
   const clearCheckBox = () => {
     if (null !== cheese_board.current) {
-      if (cheese_board.current.checked === true) {
+      if (cheese_board.current.checked) {
         cheese_board.current.checked = !cheese_board.current.checked;
       }
     }
 
     if (null !== meat.current) {
-      if (meat.current.checked === true) {
+      if (meat.current.checked) {
         meat.current.checked = !meat.current.checked;
       }
     }
 
     if (null !== cheese_mix.current) {
-      if (cheese_mix.current.checked === true) {
+      if (cheese_mix.current.checked) {
         cheese_mix.current.checked = !cheese_mix.current.checked;
       }
     }
@@ -117,7 +117,7 @@ export const ShoppingCart: React.FC = () => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../../../../constants/shop_cart.json"),
+      animationData: require("../../../../../constants/shop_cart.json"),
     });
   }, [item.productCartList.length]);
 
@@ -139,11 +139,11 @@ export const ShoppingCart: React.FC = () => {
       <div className={`shopping-cart ${flag ? "active" : ""}`}>
         <section>
           <div id="close-cart">
-            <span onClick={() => dispatch(shopToogle())}>close</span>
+            <span onClick={() => dispatch(shopToggle())}>close</span>
           </div>
           {!item.productCartList.length ? <div ref={container}></div> : null}
 
-          {data.map((item: ProductCartList, indx: number) => (
+          {data.map((item: ProductCartList) => (
             <div className="box" key={uuidv4()}>
               <div
                 className="fas fa-times"
@@ -199,7 +199,7 @@ export const ShoppingCart: React.FC = () => {
             <Link
               to="/orders"
               className="btn"
-              onClick={() => dispatch(shopToogle())}
+              onClick={() => dispatch(shopToggle())}
             >
               order now ({item.total > 0 ? item.total : 0})$
             </Link>

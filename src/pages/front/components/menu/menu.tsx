@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import lottie from "lottie-web";
 import axios from "axios";
-import { v4 as uuidv4 } from 'uuid';
-import { ProductCartList } from "../../../Types/interface";
+import { v4 as uuid } from 'uuid';
+import { ProductCartList } from "../../../../Types/interface";
 import { ProductCard } from "../product-cart/productCard";
 
 export const Menu = () => {
-  const [loader, setloader] = useState<boolean>(true);
+  const [loader, setLoader] = useState<boolean>(true);
   const container = useRef<any>(null);
   const [data_product, setData] = useState([]);
 
@@ -17,7 +17,7 @@ export const Menu = () => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../../../constants/pizza-loader.json"),
+      animationData: require("../../../../constants/pizza-loader.json"),
     });
   }, [data_product.length]);
 
@@ -26,7 +26,7 @@ export const Menu = () => {
       .get("https://63000cf734344b6431048186.mockapi.io/pizza_item")
       .then((response) => {
         setData(response.data);
-        setloader(false);
+        setLoader(false);
       })
       .catch((error) => {
         console.error(error);
@@ -48,7 +48,7 @@ export const Menu = () => {
 
       <div className="box-container">
         {data_product.splice(0, 9).map((data: ProductCartList) => {
-          return <ProductCard key={uuidv4()} data={data} />;
+          return <ProductCard key={uuid()} data={data} />;
         })}
       </div>
 

@@ -1,17 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ordersToogle } from "../../../../redux/reducer/toogleReducer/toogleReducer";
-import { toogleOrders } from "../../../../redux/selector/toogleSelector";
-import { AppDispatch } from "../../../../Types/type";
+import { AppDispatch } from "../../../../../Types/type";
+import { ordersToggle } from '../../../../../redux/reducer/toggleReducer/toggleReducer';
+import { toggleOrders } from '../../../../../redux/selector/toggleSelector';
 
 export const OrderPanel = () => {
-  const flag = useSelector(toogleOrders);
+  const flag = useSelector(toggleOrders);
   const dispatch = useDispatch<AppDispatch>();
   return (
     <div className={`my-orders ${flag ? "active" : ""}`}>
       <section>
         <div id="close-orders">
-          <span onClick={() => dispatch(ordersToogle())}>close</span>
+          <span onClick={() => dispatch(ordersToggle())}>close</span>
         </div>
 
         <h3 className="title"> my orders </h3>

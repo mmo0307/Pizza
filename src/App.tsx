@@ -1,13 +1,14 @@
 import React from "react";
 import "./App.css";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { Main } from "./components/front/main/Main";
-import { AllMenu } from "./components/front/allMenu/allMenu";
-import { Header } from "./components/front/header/header";
-import { Order } from "./components/front/order/order";
-import { FailPage } from "./components/404/404";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Main } from "./pages/front/components/main/Main";
+import { AllMenu } from "./pages/front/components/allMenu/allMenu";
+import { Header } from "./pages/front/components/header/header";
+import { Order } from "./pages/front/components/order/order";
+import { FailPage } from "./pages/404/404";
+import { Login } from "./pages/front/components/login/login";
 
-import { Admin } from "./components/admin";
+//import { Admin } from "./pages/admin";
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
         <Routes>
           <Route path="/menu" element={<AllMenu />} />
           <Route path="/orders" element={<Order />} />
+          <Route path="/user/login" element={<Login />} />
           <Route path="/" element={<Main />} />
+
 
           {/* <Route path="/admin" element={<Admin />} /> */}
 

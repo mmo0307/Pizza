@@ -2,18 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { ProductCard } from "../product-cart/productCard";
 import axios from "axios";
 import lottie from "lottie-web";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../../../Types/type";
-import { productList } from "../../../redux/selector/productSelector";
-import { PIZZA_API } from "../../../constants";
-import { addProduct, sortProduct } from "../../../redux/reducer/productReducer/productReducer";
-import { ProductCartList } from "../../../Types/interface";
+import { AppDispatch } from "../../../../Types/type";
+import { productList } from "../../../../redux/selector/productSelector";
+import { PIZZA_API } from "../../../../constants";
+import { addProduct, sortProduct } from "../../../../redux/reducer/productReducer/productReducer";
+import { ProductCartList } from "../../../../Types/interface";
 
 export const AllMenu = () => {
   const dispatch = useDispatch<AppDispatch>();
   const product = useSelector(productList);
-  const [loader, setloader] = useState<boolean>(true);
+  const [loader, setLoader] = useState<boolean>(true);
   const container = useRef<any>(null);
 
   const [currentTab, setCurrentTab] = useState<number>(0);
@@ -37,7 +37,7 @@ export const AllMenu = () => {
       .get(PIZZA_API)
       .then((response) => {
         dispatch(addProduct(response.data));
-        setloader(false);
+        setLoader(false);
       })
       .catch((error) => {
         console.error(error);
@@ -50,7 +50,7 @@ export const AllMenu = () => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../../../constants/pizza-loader.json"),
+      animationData: require("../../../../constants/pizza-loader.json"),
     });
   }, [product.length]);
 
@@ -95,27 +95,23 @@ export const AllMenu = () => {
         <div className="box-container">
           {currentTab === 0
             ? product.map((data: ProductCartList) => {
-                return <ProductCard key={uuidv4()} data={data} />;
+                return <ProductCard key={uuid()} data={data} />;
               })
             : null}
 
           {currentTab === 1
             ? product.map((data: ProductCartList) => {
-                return (
-                  data.veg === true && (
-                    <ProductCard key={uuidv4()} data={data} />
-                  )
-                );
+                return (data.veg && (
+                    <ProductCard key={uuid()} data={data}/>
+                ));
               })
             : null}
 
           {currentTab === 2
             ? product.map((data: ProductCartList) => {
-                return (
-                  data.veg === false && (
-                    <ProductCard key={uuidv4()} data={data} />
-                  )
-                );
+                return (!data.veg && (
+                    <ProductCard key={uuid()} data={data}/>
+                ));
               })
             : null}
         </div>

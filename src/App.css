@@ -136,6 +136,13 @@ section {
   margin-left: 1.7rem;
 }
 
+.header .flex .icons a {
+  font-size: 2.5rem;
+  color: var(--light-color);
+  cursor: pointer;
+  margin-left: 1.7rem;
+}
+
 .header .flex .icons div:hover {
   color: var(--red);
 }
@@ -168,7 +175,7 @@ section {
   margin-bottom: 2.5rem;
 }
 
-.user-account #close-account span {
+.user-account #close-account a {
   cursor: pointer;
   font-size: 2.5rem;
   color: var(--red);
@@ -177,48 +184,6 @@ section {
 
 .user-account #close-account span:hover {
   color: var(--black);
-}
-
-.user-account .user {
-  padding: 1.5rem;
-  text-align: center;
-  background-color: var(--light-bg);
-  border-radius: 0.5rem;
-}
-
-.user-account .user p {
-  font-size: 2rem;
-  color: var(--black);
-}
-
-.user-account .user p span {
-  color: var(--red);
-}
-
-.user-account .display-orders {
-  padding: 3rem 2rem;
-  text-align: center;
-  background-color: var(--light-bg);
-  border-radius: 0.5rem;
-  margin: 2rem 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.user-account .display-orders p {
-  padding: 1rem 2.5rem;
-  font-size: 2rem;
-  color: var(--light-color);
-  background-color: var(--white);
-  border-radius: 0.5rem;
-  box-shadow: var(--box-shadow);
-}
-
-.user-account .display-orders p span {
-  color: var(--red);
 }
 
 .user-account .flex {

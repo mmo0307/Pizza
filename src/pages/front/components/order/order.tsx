@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteItem } from "../../../redux/reducer/cartReducer/cartReducer";
-import { productCartList } from "../../../redux/selector/cartSelector";
-import { AppDispatch } from "../../../Types/type";
+import { deleteItem } from "../../../../redux/reducer/cartReducer/cartReducer";
+import { productCartList } from "../../../../redux/selector/cartSelector";
+import { AppDispatch } from "../../../../Types/type";
 import { v4 as uuidv4 } from "uuid";
 
 export const Order = () => {

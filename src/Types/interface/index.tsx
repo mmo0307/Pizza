@@ -48,7 +48,7 @@ export interface StoreState {
   total: number;
 }
 
-export interface ToogleState {
+export interface ToggleState {
   account: boolean;
   orders: boolean;
   shop: boolean;

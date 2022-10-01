@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import cartReducer from './cartReducer/cartReducer';
 import productReducer from './productReducer/productReducer';
-import toogleReducer from './toogleReducer/toogleReducer';
+import toggleReducer from './toggleReducer/toggleReducer';
 
 export default combineReducers({
-  toogle: toogleReducer,
+  toggle: toggleReducer,
   cart: cartReducer,
   product: productReducer,
 });

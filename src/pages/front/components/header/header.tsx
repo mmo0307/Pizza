@@ -15,12 +15,28 @@ export const Header = () => {
   const flag = useSelector(toggleMenu);
   const item = useSelector(productCartList);
   const [data, setData] = useState<ProductCartList[]>([]);
+  const localToken = localStorage.getItem('token');
+  const [token, setToken] = useState<string>('');
 
-  const header_class = location.pathname === '/admin' ? 'header-none' : 'header'
+  const deleteToken = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_data');
+    setToken('');
+  }
+
+  const header_class = location.pathname === '/admin' ? 'header-none' : 'header';
+
+  useEffect(() => {
+    if(localToken) {
+      setToken(localToken);
+    }
+  }, [localToken]);
 
   useEffect(() => {
     setData(item.productCartList);
   }, [item]);
+
+  console.log('token.length=>', token.length);
 
   return (
     <>
@@ -43,11 +59,16 @@ export const Header = () => {
               className="fas fa-bars"
               onClick={() => dispatch(menuToggle())}
             ></div>
-            <Link
-              id="user-btn"
-              className="fas fa-user"
-              to="/user/login"
-            ></Link>
+            {
+              token.length > 0 ?
+                  <div className="fas fa-door-open" onClick={() => deleteToken()}></div>
+                  :
+                  <Link
+                    id="user-btn"
+                    className="fas fa-user"
+                    to="/user/login"
+                  ></Link>
+            }
             <div
               id="order-btn"
               className="fas fa-box"

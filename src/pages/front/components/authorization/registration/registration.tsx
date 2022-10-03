@@ -10,15 +10,25 @@ export const Registration = () => {
     const [password, setPassword] = useState<string>('');
     const [repeatPassword, setRepeatPassword] = useState<string>('');
 
+    const rand = () => Math.random().toString(36).substr(2);
+    const token = () => rand() + rand();
+
     const handleRegistration = () => {
-        axios.post('http://localhost:8080/user/login', {
+        axios.post('http://localhost:8080/user/registration', {
             name: nameSurname,
             email,
             phone,
             password,
-        }).then(r => {
-            console.log('r=>', r)
-            if(r.status === 200){
+        }).then(res => {
+            localStorage.setItem('token', token());
+            const dataUser = {
+                name: res.data.name,
+                email: res.data.email,
+                phone: res.data.phone,
+                role_id: res.data.role_id,
+            };
+            localStorage.setItem('user_data', JSON.stringify(dataUser));
+            if(res.status === 200){
                 navigate('/');
             }
         })

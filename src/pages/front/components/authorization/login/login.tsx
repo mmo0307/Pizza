@@ -6,8 +6,31 @@ export const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
-    const handleLogin = () => {}
+    const rand = () => Math.random().toString(36).substr(2);
+    const token = () => rand() + rand();
+
+    const handleLogin = () => {
+        axios.post('http://localhost:8080/user/login', {
+            email,
+            password,
+        }).then(r => {
+            localStorage.setItem('token', token());
+            const dataUser = {
+                name: r.data.name,
+                email: r.data.email,
+                phone: r.data.phone,
+                role_id: r.data.role_id,
+            };
+             localStorage.setItem('user_data', JSON.stringify(dataUser));
+            if(r.status === 200){
+                navigate('/');
+            }
+        }).catch(res => {
+            setError(res.response.data.message);
+        })
+    }
 
     return (
         <div className={`user-account active`}>
@@ -19,6 +42,7 @@ export const Login = () => {
                 <div className="flex">
                         <div>
                             <h3>login now</h3>
+                            <h4>{error && error}</h4>
                             <input
                                 type="email"
                                 name="email"
@@ -42,7 +66,7 @@ export const Login = () => {
                                 value="login now"
                                 name="login"
                                 className="btn"
-                                onClick={() => handleLogin}
+                                onClick={() => handleLogin()}
                             />
                             <div className="btn-block">
                                 <button onClick={() => navigate('/user/registration')}>Registration</button>

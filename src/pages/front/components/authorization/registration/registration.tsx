@@ -22,6 +22,7 @@ export const Registration = () => {
         }).then(res => {
             localStorage.setItem('token', token());
             const dataUser = {
+                id: res.data.id,
                 name: res.data.name,
                 email: res.data.email,
                 phone: res.data.phone,

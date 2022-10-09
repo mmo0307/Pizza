@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { menuToggle, ordersToggle, shopToggle } from "../../../../redux/reducer/toggleReducer/toggleReducer";
 import { productCartList } from "../../../../redux/selector/cartSelector";
 import { toggleMenu } from "../../../../redux/selector/toggleSelector";
-import { ProductCartList } from "../../../../Types/interface";
+import { ProductCartList, UserData } from "../../../../Types/interface";
 import { AppDispatch } from "../../../../Types/type";
 import { OrderPanel } from "../panels/order/orderPanel";
 import { ShoppingCart } from "../panels/shopping-cart/shoppingCart";
@@ -16,7 +16,15 @@ export const Header = () => {
   const item = useSelector(productCartList);
   const [data, setData] = useState<ProductCartList[]>([]);
   const localToken = localStorage.getItem('token');
+  const userToken = localStorage.getItem('user_data');
   const [token, setToken] = useState<string>('');
+  const [userData, setUserData] = useState<UserData>({
+    id: 0,
+    email: '',
+    name: '',
+    phone: 123456789,
+    role_id: 2
+  });
 
   const deleteToken = () => {
     localStorage.removeItem('token');
@@ -30,13 +38,14 @@ export const Header = () => {
     if(localToken) {
       setToken(localToken);
     }
+    if(userToken){
+      setUserData(JSON.parse(userToken));
+    }
   }, [localToken]);
 
   useEffect(() => {
     setData(item.productCartList);
   }, [item]);
-
-  console.log('token.length=>', token.length);
 
   return (
     <>
@@ -61,7 +70,10 @@ export const Header = () => {
             ></div>
             {
               token.length > 0 ?
-                  <div className="fas fa-door-open" onClick={() => deleteToken()}></div>
+                  <>
+                    <div className="fas fa-door-open" onClick={() => deleteToken()}></div>
+                    {userData.role_id === 1 ? <div className="fas fa-lock"></div> : null}
+                  </>
                   :
                   <Link
                     id="user-btn"

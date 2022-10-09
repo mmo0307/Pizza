@@ -1,21 +1,62 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteItem } from "../../../../redux/reducer/cartReducer/cartReducer";
 import { productCartList } from "../../../../redux/selector/cartSelector";
 import { AppDispatch } from "../../../../Types/type";
 import { v4 as uuidv4 } from "uuid";
+import {AddressData, UserData} from "../../../../Types/interface";
+import axios from "axios";
 
 export const Order = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const cartData = useSelector(productCartList);
-  const navigate = useNavigate();
+  const userToken = localStorage.getItem('user_data');
+  const [userData, setUserData] = useState<UserData>({
+    id: 0,
+    email: '',
+    name: '',
+    phone: 123456789,
+    role_id: 2
+  });
+  const [name, setName] = useState<string>('');
+  const [phone, setPhone] = useState<number>(0);
+  const [addressData, setAddressData] = useState<AddressData[]>([]);
+  const [selectAddress, setSelectAddress] = useState<number>(0);
+
+  useEffect(() => {
+    if(userToken){
+      setUserData(JSON.parse(userToken));
+    }
+    axios.get('http://localhost:8080/order/addresses').then(res => setAddressData(res.data));
+  }, [userToken]);
+
+  useEffect(() => {
+    setName(userData.name);
+    setPhone(userData.phone);
+  }, [userData])
 
   const checkLength = () => {
     if (cartData.productCartList.length === 1) {
       navigate("/");
     }
   };
+
+  const submitOrder = () => {
+    axios.post('http://localhost:8080/user/success-order', {
+      price: cartData.total,
+      client_id: userData.id,
+      address_id: selectAddress,
+      products: JSON.stringify(cartData.productCartList)
+    }).then(res => {
+      if(res.status === 200){
+        localStorage.removeItem('product');
+        navigate("/");
+      }
+    });
+
+  }
 
   return (
     <>
@@ -56,6 +97,8 @@ export const Order = () => {
                     required
                     placeholder="enter your name"
                     maxLength={20}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="inputBox">
@@ -67,6 +110,8 @@ export const Order = () => {
                     required
                     placeholder="enter your number"
                     min="0"
+                    value={phone}
+                    onChange={(e) => setPhone(+e.target.value)}
                   />
                 </div>
                 <div className="inputBox">
@@ -77,15 +122,14 @@ export const Order = () => {
                   </select>
                 </div>
                 <div className="inputBox">
-                  <span>address line 01 :</span>
-                  <input
-                    type="text"
-                    name="flat"
-                    className="box"
-                    required
-                    placeholder="e.g. flat no."
-                    maxLength={50}
-                  />
+                  <span>address :</span>
+                  <select name="method" className="box" onChange={(e) => setSelectAddress(+e.target.value)}>
+                    {
+                      addressData && addressData.map((item) =>
+                          <option key={uuidv4()} value={item.id_address}>{item.address_name}</option>
+                      )
+                    }
+                  </select>
                 </div>
               </div>
 
@@ -94,6 +138,7 @@ export const Order = () => {
                 value={`order now (${cartData.total}$)`}
                 className="btn"
                 name="order"
+                onClick={() => submitOrder()}
               />
             </div>
           </div>

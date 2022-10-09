@@ -18,6 +18,7 @@ export const Login = () => {
         }).then(r => {
             localStorage.setItem('token', token());
             const dataUser = {
+                id: r.data.id,
                 name: r.data.name,
                 email: r.data.email,
                 phone: r.data.phone,

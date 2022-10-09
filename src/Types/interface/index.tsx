@@ -54,3 +54,16 @@ export interface ToggleState {
   shop: boolean;
   menu: boolean;
 }
+
+export interface UserData {
+  id: number,
+  email: '',
+  name: '',
+  phone: number,
+  role_id: number
+}
+
+export interface AddressData {
+  id_address: number,
+  address_name: ''
+}

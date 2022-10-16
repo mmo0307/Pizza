@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import lottie from "lottie-web";
 import axios from "axios";
-import { v4 as uuid } from 'uuid';
 import { ProductCartList } from "../../../../Types/interface";
 import { ProductCard } from "../product-cart/productCard";
 
@@ -48,7 +47,7 @@ export const Menu = () => {
 
       <div className="box-container">
         {data_product.splice(0, 9).map((data: ProductCartList) => {
-          return <ProductCard key={uuid()} data={data} />;
+          return <ProductCard data={data} />;
         })}
       </div>
 

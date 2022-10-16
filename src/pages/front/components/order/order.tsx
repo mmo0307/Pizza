@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteItem } from "../../../../redux/reducer/cartReducer/cartReducer";
+import { clearItem, deleteItem } from "../../../../redux/reducer/cartReducer/cartReducer";
 import { productCartList } from "../../../../redux/selector/cartSelector";
 import { AppDispatch } from "../../../../Types/type";
 import { v4 as uuidv4 } from "uuid";
-import {AddressData, UserData} from "../../../../Types/interface";
+import { AddressData, UserData } from "../../../../Types/interface";
 import axios from "axios";
 
 export const Order = () => {
@@ -23,7 +23,8 @@ export const Order = () => {
   const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<number>(0);
   const [addressData, setAddressData] = useState<AddressData[]>([]);
-  const [selectAddress, setSelectAddress] = useState<number>(0);
+  const [selectAddress, setSelectAddress] = useState<number>(2);
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     if(userToken){
@@ -44,25 +45,30 @@ export const Order = () => {
   };
 
   const submitOrder = () => {
-    axios.post('http://localhost:8080/user/success-order', {
-      price: cartData.total,
-      client_id: userData.id,
-      address_id: selectAddress,
-      products: JSON.stringify(cartData.productCartList)
-    }).then(res => {
-      if(res.status === 200){
-        localStorage.removeItem('product');
-        navigate("/");
-      }
-    });
-
+    if(name.length === 0 || phone === 0 || selectAddress === 0){
+      setError('Some field is not selected or empty!');
+    } else {
+      axios.post('http://localhost:8080/user/success-order', {
+        price: cartData.total,
+        client_id: userData.id,
+        client_name: name,
+        address_id: selectAddress,
+        products: JSON.stringify(cartData.productCartList)
+      }).then(res => {
+        if (res.status === 200) {
+          localStorage.removeItem('product');
+          dispatch(clearItem());
+          navigate("/");
+        }
+      });
+    }
   }
 
   return (
     <>
       <section className="order" id="order">
         <h1 className="heading">order now</h1>
-
+        <h4 className="error_heading">{error && error}</h4>
         <div className="form_order">
           <div>
             <div className="display-orders">

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const Login = () => {
@@ -8,7 +8,7 @@ export const Login = () => {
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
 
-    const rand = () => Math.random().toString(36).substr(2);
+    const rand = () => Math.random().toString(36).substring(2);
     const token = () => rand() + rand();
 
     const handleLogin = () => {

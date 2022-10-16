@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const Registration = () => {
@@ -8,9 +8,9 @@ export const Registration = () => {
     const [email, setEmail] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [repeatPassword, setRepeatPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
-    const rand = () => Math.random().toString(36).substr(2);
+    const rand = () => Math.random().toString(36).substring(2);
     const token = () => rand() + rand();
 
     const handleRegistration = () => {
@@ -32,7 +32,9 @@ export const Registration = () => {
             if(res.status === 200){
                 navigate('/');
             }
-        })
+        }).catch(res => {
+            setError(res.response.data.message);
+        });
     }
 
     return (
@@ -45,6 +47,7 @@ export const Registration = () => {
                 <div className="flex">
                             <div>
                                 <h3>register now</h3>
+                                <h4>{error && error}</h4>
                                 <input
                                     type="text"
                                     name="name"
@@ -80,15 +83,6 @@ export const Registration = () => {
                                     placeholder="enter your password"
                                     maxLength={20}
                                     onChange={(e) => setPassword(e.target.value)}
-                                />
-                                <input
-                                    type="password"
-                                    name="cpass"
-                                    required
-                                    className="box"
-                                    placeholder="confirm your password"
-                                    maxLength={20}
-                                    onChange={(e) => setRepeatPassword(e.target.value)}
                                 />
                                 <input
                                     type="submit"

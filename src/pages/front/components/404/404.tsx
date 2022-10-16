@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Pizza_404 from '../../images/pizza/pizza_404.png'
+import Pizza_404 from '../../../../images/pizza/pizza_404.png'
 
 export const FailPage = () => {
   return (

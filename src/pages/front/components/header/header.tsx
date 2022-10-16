@@ -73,6 +73,11 @@ export const Header = () => {
                   <>
                     <div className="fas fa-door-open" onClick={() => deleteToken()}></div>
                     {userData.role_id === 1 ? <div className="fas fa-lock"></div> : null}
+                    <div
+                        id="order-btn"
+                        className="fas fa-box"
+                        onClick={() => dispatch(ordersToggle())}
+                    ></div>
                   </>
                   :
                   <Link
@@ -81,11 +86,6 @@ export const Header = () => {
                     to="/user/login"
                   ></Link>
             }
-            <div
-              id="order-btn"
-              className="fas fa-box"
-              onClick={() => dispatch(ordersToggle())}
-            ></div>
             <div
               id="cart-btn"
               className="fas fa-shopping-cart"

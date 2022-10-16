@@ -18,7 +18,7 @@ export const About = () => {
           quae amet beatae magni numquam facere sit. Tempora vel laboriosam
           repudiandae!
         </p>
-        <a href="src/pages/front/components/about/about#menu" className="btn">
+        <a href="#menu" className="btn">
           our menu
         </a>
       </div>
@@ -31,7 +31,7 @@ export const About = () => {
           quae amet beatae magni numquam facere sit. Tempora vel laboriosam
           repudiandae!
         </p>
-        <a href="src/pages/front/components/about/about#menu" className="btn">
+        <a href="#menu" className="btn">
           our menu
         </a>
       </div>
@@ -44,7 +44,7 @@ export const About = () => {
           quae amet beatae magni numquam facere sit. Tempora vel laboriosam
           repudiandae!
         </p>
-        <a href="src/pages/front/components/about/about#menu" className="btn">
+        <a href="#menu" className="btn">
           our menu
         </a>
       </div>

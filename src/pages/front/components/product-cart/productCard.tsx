@@ -5,6 +5,7 @@ import Spicy from "../../../../images/pizza/spicy.png";
 import { ProductCartList } from "../../../../Types/interface";
 import { addToCart } from "../../../../redux/reducer/cartReducer/cartReducer";
 import { AppDispatch } from "../../../../Types/type";
+import {v4 as uuid} from "uuid";
 
 export const ProductCard: React.FC<{ data: ProductCartList }> = ({ data }) => {
   const { id, price, img, name, veg, spicy, description, additions } = data;
@@ -29,7 +30,7 @@ export const ProductCard: React.FC<{ data: ProductCartList }> = ({ data }) => {
   };
 
   return (
-    <div className="box" id={`${id}`}>
+    <div className="box" id={`${id}`} key={uuid()}>
       <div className="price_box">
         <span className="price">${price}</span>
         <div className="designations">

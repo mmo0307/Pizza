@@ -53,7 +53,7 @@ const cartReducer = createSlice({
       const { productItem, meat, cheese_mix, cheese_board, count } =
         action.payload;
 
-      state.productCartList.forEach((item, index) => {
+      state.productCartList.forEach((item) => {
         if (current(item).id === productItem.id) {
           item.additions[0].meat[0].selected = meat;
           item.additions[0].cheese_mix[0].selected = cheese_mix;
@@ -83,9 +83,13 @@ const cartReducer = createSlice({
       state.total = total;
       localStorage.setItem("product", JSON.stringify(state));
     },
+    clearItem: (state) =>  {
+      state.productCartList = [];
+      state.total = 0;
+    }
   },
 });
 
-export const { addToCart, deleteItem, changeItem } = cartReducer.actions;
+export const { addToCart, deleteItem, changeItem, clearItem } = cartReducer.actions;
 
 export default cartReducer.reducer;

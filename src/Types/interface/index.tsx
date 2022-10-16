@@ -67,3 +67,14 @@ export interface AddressData {
   id_address: number,
   address_name: ''
 }
+
+export interface UserOrdersData {
+  order_id: number,
+  client_id: number,
+  client_name: string,
+  products: ProductCartList[],
+  price: number,
+  address_id: number,
+  order_date: string,
+  address_name: string,
+}

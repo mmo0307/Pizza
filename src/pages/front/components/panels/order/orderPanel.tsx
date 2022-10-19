@@ -30,7 +30,7 @@ export const OrderPanel = () => {
 
   const getUserOrdersData = useCallback(() => {
     if(userData.id > 0) {
-      axios.get(`http://localhost:8080/user/userOrders/${userData.id}`).then(res => setUserOrdersData(res.data));
+      axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/user/userOrders/${userData.id}`).then(res => setUserOrdersData(res.data));
     }
   }, [userData]);
 

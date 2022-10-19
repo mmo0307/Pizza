@@ -72,7 +72,8 @@ export const Header = () => {
               token.length > 0 ?
                   <>
                     <div className="fas fa-door-open" onClick={() => deleteToken()}></div>
-                    {userData.role_id === 1 ? <div className="fas fa-lock"></div> : null}
+                    {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+                    {userData.role_id === 1 ? <a href={`${process.env.REACT_APP_ADMIN_DOMAIN}/orders`} className="fas fa-lock"></a> : null}
                     <div
                         id="order-btn"
                         className="fas fa-box"

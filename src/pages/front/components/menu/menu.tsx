@@ -22,7 +22,7 @@ export const Menu = () => {
 
   useEffect(() => {
     axios
-      .get("https://63000cf734344b6431048186.mockapi.io/pizza_item")
+      .get(`${process.env.REACT_APP_PIZZA_API}`)
       .then((response) => {
         setData(response.data);
         setLoader(false);

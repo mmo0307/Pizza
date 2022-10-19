@@ -30,7 +30,7 @@ export const Order = () => {
     if(userToken){
       setUserData(JSON.parse(userToken));
     }
-    axios.get('http://localhost:8080/order/addresses').then(res => setAddressData(res.data));
+    axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/order/addresses`).then(res => setAddressData(res.data));
   }, [userToken]);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const Order = () => {
     if(name.length === 0 || phone === 0 || selectAddress === 0){
       setError('Какое-то поле пустое или не выбранно!');
     } else {
-      axios.post('http://localhost:8080/user/success-order', {
+      axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/user/success-order`, {
         price: cartData.total,
         client_id: userData.id,
         client_name: name,

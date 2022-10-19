@@ -17,13 +17,12 @@ export const Registration = () => {
         if(nameSurname === '' || email === '' || phone === '' || password === ''){
             setError('Какое-то поле не заполено!');
         } else {
-            axios.post('http://localhost:8080/user/registration', {
+            axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/user/registration`, {
                 name: nameSurname,
                 email,
                 phone,
                 password,
             }).then(res => {
-                console.log('res=>', res);
                 localStorage.setItem('token', token());
                 const dataUser = {
                     id: res.data.id,

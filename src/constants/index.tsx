@@ -1,1 +1,0 @@
-export const PIZZA_API = 'https://63000cf734344b6431048186.mockapi.io/pizza_item';

@@ -6,7 +6,6 @@ import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../../../Types/type";
 import { productList } from "../../../../redux/selector/productSelector";
-import { PIZZA_API } from "../../../../constants";
 import { addProduct, sortProduct } from "../../../../redux/reducer/productReducer/productReducer";
 import { ProductCartList } from "../../../../Types/interface";
 
@@ -34,7 +33,7 @@ export const AllMenu = () => {
 
   useEffect(() => {
     axios
-      .get(PIZZA_API)
+      .get(`${process.env.REACT_APP_PIZZA_API}`)
       .then((response) => {
         dispatch(addProduct(response.data));
         setLoader(false);

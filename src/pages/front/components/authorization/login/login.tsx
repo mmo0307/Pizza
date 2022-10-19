@@ -12,7 +12,7 @@ export const Login = () => {
     const token = () => rand() + rand();
 
     const handleLogin = () => {
-        axios.post('http://localhost:8080/user/login', {
+        axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/user/login`, {
             email,
             password,
         }).then(r => {

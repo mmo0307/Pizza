@@ -29,7 +29,9 @@ export const OrderPanel = () => {
   }]);
 
   const getUserOrdersData = useCallback(() => {
-    axios.get(`http://localhost:8080/user/userOrders/${userData.id}`).then(res => setUserOrdersData(res.data));
+    if(userData.id > 0) {
+      axios.get(`http://localhost:8080/user/userOrders/${userData.id}`).then(res => setUserOrdersData(res.data));
+    }
   }, [userData]);
 
   useEffect(() => {
@@ -46,25 +48,25 @@ export const OrderPanel = () => {
     <div className={`my-orders ${flag ? "active" : ""}`}>
       <section>
         <div id="close-orders">
-          <span onClick={() => dispatch(ordersToggle())}>close</span>
+          <span onClick={() => dispatch(ordersToggle())}>Закрыть</span>
         </div>
 
-        <h3 className="title"> my orders </h3>
+        <h3 className="title"> Мои заказы </h3>
 
         {userOrdersData && userOrdersData.map((item, index) => {
           return (
             <div className="box" key={index}>
               <p>
-                placed on : <span>{item.order_date.substring(0, 10)}</span>{" "}
+                Дата заказа : <span>{item.order_date.substring(0, 10)}</span>{" "}
               </p>
               <p>
-                name : <span>{item.client_name}</span>{" "}
+                Имя : <span>{item.client_name}</span>{" "}
               </p>
               <p>
-                number : <span>{userData.phone}</span>
+                Телефон : <span>{userData.phone}</span>
               </p>
               <p>
-                address :{" "}
+                Аддресс :{" "}
                 <span>{item.address_name}</span>
               </p>
 
@@ -73,7 +75,7 @@ export const OrderPanel = () => {
               {/*</p>*/}
 
               <p>
-                your orders :{" "}
+                Мои заказы :{" "}
                 {
                   item.products.map((item) => {
                     return(
@@ -88,7 +90,7 @@ export const OrderPanel = () => {
               </p>
 
               <p>
-                total price : <span>${item.price}</span>
+                Сумма заказа : <span>${item.price}</span>
               </p>
 
               {/*<p>*/}

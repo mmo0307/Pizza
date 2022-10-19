@@ -43,17 +43,17 @@ export const Menu = () => {
         ></div>
       ) : null}
 
-      <h1 className="heading">our menu</h1>
+      <h1 className="heading">Наше меню</h1>
 
       <div className="box-container">
-        {data_product.splice(0, 9).map((data: ProductCartList) => {
-          return <ProductCard data={data} />;
+        {data_product.splice(0, 9).map((data: ProductCartList, index) => {
+          return <ProductCard data={data} key={index}/>;
         })}
       </div>
 
       <div className="link-container">
         <Link className="link-btn" to="/menu">
-          Go to All Menu
+          Перейти ко всему меню
         </Link>
       </div>
     </section>

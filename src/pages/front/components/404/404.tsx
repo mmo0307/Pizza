@@ -12,8 +12,8 @@ export const FailPage = () => {
         alignItems: 'center',
     }}>
         <img src={Pizza_404} alt="404 Pizza" width={300} height={300}/>
-        <h1>404 Failed</h1>
-        <Link to="/" className="link-btn">Back</Link>
+        <h1>404 Ошибка</h1>
+        <Link to="/" className="link-btn">Назад на главный экран</Link>
     </div>
   )
 }

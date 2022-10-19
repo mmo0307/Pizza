@@ -18,7 +18,7 @@ export const Modal = ({ active, setActive, children }: Props) => {
       <div className={active ? "modal_content active" : "modal_content"}>
         <div className="modal_content_header">
           <div>
-            <p className="modal_content_title">Our orders</p>
+            <p className="modal_content_title">Ваш заказ</p>
           </div>
           <div>
             <span

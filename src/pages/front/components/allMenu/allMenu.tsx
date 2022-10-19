@@ -20,15 +20,15 @@ export const AllMenu = () => {
   const tabs = [
     {
       id: 0,
-      tabTitle: "All",
+      tabTitle: "Все пиццы",
     },
     {
       id: 1,
-      tabTitle: "Vegan",
+      tabTitle: "Веган",
     },
     {
       id: 2,
-      tabTitle: "Meat",
+      tabTitle: "Острые",
     },
   ];
 
@@ -86,8 +86,8 @@ export const AllMenu = () => {
               id=""
               onChange={(e) => dispatch(sortProduct(e.currentTarget.value))}
             >
-              <option value="low">Low - High (Price)</option>
-              <option value="high">High - Low (Price)</option>
+              <option value="low">От Дешевых к Дорогим (по цене)</option>
+              <option value="high">От Дорогих к Дешевым (по цене)</option>
             </select>
           </div>
         ) : null}

@@ -139,7 +139,7 @@ export const ShoppingCart: React.FC = () => {
       <div className={`shopping-cart ${flag ? "active" : ""}`}>
         <section>
           <div id="close-cart">
-            <span onClick={() => dispatch(shopToggle())}>close</span>
+            <span onClick={() => dispatch(shopToggle())}>Закрыть</span>
           </div>
           {!item.productCartList.length ? <div ref={container}></div> : null}
 
@@ -201,7 +201,7 @@ export const ShoppingCart: React.FC = () => {
               className="btn"
               onClick={() => dispatch(shopToggle())}
             >
-              order now ({item.total > 0 ? item.total : 0})$
+              Сумма заказа ({item.total > 0 ? item.total : 0})$
             </Link>
           ) : null}
         </section>
@@ -249,7 +249,7 @@ export const ShoppingCart: React.FC = () => {
             <div className="content_pizza">
               <p className="pizza_description">{description}</p>
 
-              <h2 className="addition">Add to {name}</h2>
+              <h2 className="addition">Добавки к {name}</h2>
 
               <div className="addition_content">
                 <input
@@ -314,7 +314,7 @@ export const ShoppingCart: React.FC = () => {
                 setActive(false);
               }}
             >
-              Change
+              Изменить заказ
             </button>
           </div>
         </div>

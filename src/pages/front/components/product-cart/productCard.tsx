@@ -67,7 +67,7 @@ export const ProductCard: React.FC<{ data: ProductCartList }> = ({ data }) => {
         />
         <input
           type="submit"
-          value="add to cart"
+          value="Добавить"
           name="add_to_cart"
           className="btn"
           onClick={() => dispatch(addToCart(item))}

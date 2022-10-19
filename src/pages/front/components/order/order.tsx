@@ -46,7 +46,7 @@ export const Order = () => {
 
   const submitOrder = () => {
     if(name.length === 0 || phone === 0 || selectAddress === 0){
-      setError('Some field is not selected or empty!');
+      setError('Какое-то поле пустое или не выбранно!');
     } else {
       axios.post('http://localhost:8080/user/success-order', {
         price: cartData.total,
@@ -67,7 +67,7 @@ export const Order = () => {
   return (
     <>
       <section className="order" id="order">
-        <h1 className="heading">order now</h1>
+        <h1 className="heading">Заказ</h1>
         <h4 className="error_heading">{error && error}</h4>
         <div className="form_order">
           <div>
@@ -95,7 +95,7 @@ export const Order = () => {
             <div>
               <div className="flex">
                 <div className="inputBox">
-                  <span>your name :</span>
+                  <span>Ваше Имя :</span>
                   <input
                     type="text"
                     name="name"
@@ -108,7 +108,7 @@ export const Order = () => {
                   />
                 </div>
                 <div className="inputBox">
-                  <span>your number :</span>
+                  <span>Ваш номер телефона :</span>
                   <input
                     type="number"
                     name="number"
@@ -120,15 +120,15 @@ export const Order = () => {
                     onChange={(e) => setPhone(+e.target.value)}
                   />
                 </div>
+                {/*<div className="inputBox">*/}
+                {/*  <span>payment method</span>*/}
+                {/*  <select name="method" className="box">*/}
+                {/*    <option value="cash on delivery">cash on delivery</option>*/}
+                {/*    <option value="credit card">credit card</option>*/}
+                {/*  </select>*/}
+                {/*</div>*/}
                 <div className="inputBox">
-                  <span>payment method</span>
-                  <select name="method" className="box">
-                    <option value="cash on delivery">cash on delivery</option>
-                    <option value="credit card">credit card</option>
-                  </select>
-                </div>
-                <div className="inputBox">
-                  <span>address :</span>
+                  <span>Аддресс :</span>
                   <select name="method" className="box" onChange={(e) => setSelectAddress(+e.target.value)}>
                     {
                       addressData && addressData.map((item) =>
@@ -141,9 +141,9 @@ export const Order = () => {
 
               <input
                 type="submit"
-                value={`order now (${cartData.total}$)`}
+                value={`Сумма заказа (${cartData.total}$)`}
                 className="btn"
-                name="order"
+                name="Сделать заказ"
                 onClick={() => submitOrder()}
               />
             </div>

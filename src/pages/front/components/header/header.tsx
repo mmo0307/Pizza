@@ -56,10 +56,10 @@ export const Header = () => {
           </Link>
 
           <nav className={`navbar ${flag ? "active" : ""}`}>
-            <a href={"#home"}>home</a>
-            <a href={"#about"}>about</a>
-            <a href={"#menu"}>menu</a>
-            <a href={"#contact"}>contact</a>
+            <a href={"#home"}>Главная</a>
+            <a href={"#about"}>О нас</a>
+            <a href={"#menu"}>Меню</a>
+            <a href={"#contact"}>Контакты</a>
           </nav>
 
           <div className="icons">

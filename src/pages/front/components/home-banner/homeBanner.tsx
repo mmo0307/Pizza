@@ -12,15 +12,15 @@ export const HomeBanner = () => {
   }> = [
     {
       img: Home1,
-      title: "homemade Pepperoni Pizza",
+      title: "Паперони Пицца",
     },
     {
       img: Home2,
-      title: "Pizza With Mushrooms",
+      title: "Пицца с Грибами",
     },
     {
       img: Home3,
-      title: "Mascarpone And Mushrooms",
+      title: "Маскарпоне и Грибы",
     },
   ];
 

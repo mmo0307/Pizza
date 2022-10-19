@@ -37,19 +37,19 @@ export const Login = () => {
         <div className={`user-account active`}>
             <section>
                 <div id="close-account">
-                    <Link to='/'>close</Link>
+                    <Link to='/'>Закрыть</Link>
                 </div>
 
                 <div className="flex">
                         <div>
-                            <h3>login now</h3>
+                            <h3>Войти</h3>
                             <h4>{error && error}</h4>
                             <input
                                 type="email"
                                 name="email"
                                 required
                                 className="box"
-                                placeholder="enter your email"
+                                placeholder="Введите свою почту"
                                 maxLength={50}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -58,19 +58,19 @@ export const Login = () => {
                                 name="pass"
                                 required
                                 className="box"
-                                placeholder="enter your password"
+                                placeholder="Введите свой пароль"
                                 maxLength={20}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             <input
                                 type="submit"
-                                value="login now"
+                                value="Войти"
                                 name="login"
                                 className="btn"
                                 onClick={() => handleLogin()}
                             />
                             <div className="btn-block">
-                                <button onClick={() => navigate('/user/registration')}>Registration</button>
+                                <button onClick={() => navigate('/user/registration')}>Регистрация</button>
                             </div>
 
                         </div>
